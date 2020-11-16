@@ -1,39 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-// import Auth from "./pages/Auth/Auth";
-// import Dashboard from "./pages/Dashboard/Dashboard";
 import { Home } from "./pages/Home";
-// import { getSession } from "./utils";
+import { Admin } from "./pages/Admin/Admin";
 
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+import "./App.css";
 
-  async componentDidMount() {
-    // console.log(getSession())
-  }
-
-  render() {
-    return (
-      <Router>
-        <Switch>
-          <Route component={Home} />
-        </Switch>
-      </Router>
-    );
-  }
-}
-
-/**
- * A component to protect routes.
- * Shows Auth page if the user is not authenticated
-//  */
-// const PrivateRoute = ({ component, ...options }) => {
-//   const session = getSession();
-
-//   const finalComponent = session ? Dashboard : Home;
-//   return <Route {...options} component={finalComponent} />;
-// };
+export const App = () => (
+  <Router>
+    <Switch>
+      <Route path="/" exact component={Home} />
+      <Route path="/admin" exact component={Admin} />
+    </Switch>
+  </Router>
+);
