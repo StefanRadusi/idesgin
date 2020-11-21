@@ -26,3 +26,8 @@ inputs:
       Resource:
         - ${output:database.arn}
         - ${output:database.arn}/index/*
+    - Effect: Allow
+      Action:
+        - s3:*
+      Resource: '*'
+
