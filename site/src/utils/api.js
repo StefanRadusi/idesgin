@@ -27,8 +27,14 @@ export const userGet = async (token) => {
   });
 };
 
-export const uploadImg = async (img) => {
-  return await requestApi("upload", "POST", img, {
+export const uploadImg = (img) => {
+  return requestApi("/upload", "POST", img, {
+    Authorization: `Bearer ${localStorage.getItem("token")}`,
+  });
+};
+
+export const updateProject = (payload) => {
+  return requestApi("/project/update", "POST", payload, {
     Authorization: `Bearer ${localStorage.getItem("token")}`,
   });
 };
@@ -58,6 +64,7 @@ export const requestApi = async (
   // Set headers
   headers = Object.assign({ "Content-Type": "application/json" }, headers);
 
+  // console.log("upload");
   // Default options are marked with *
   const response = await fetch(url, {
     method: method.toUpperCase(),

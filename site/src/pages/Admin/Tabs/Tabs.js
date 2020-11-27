@@ -5,7 +5,7 @@ import { EditPortfolio } from "../EditPortfolio";
 import "./Tabs.css";
 import { TabsHeaderButton } from "./TabsHeaderButton";
 
-function isTabSelected(path, buttonName) {
+export function isTabSelected(path, buttonName) {
   return path.includes(buttonName);
 }
 

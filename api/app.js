@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const passport = require("passport");
-const { users, uploads } = require("./controllers");
+const { users, uploads, projects } = require("./controllers");
 
 /**
  * Configure Passport
@@ -69,6 +69,12 @@ app.post(
   "/upload",
   passport.authenticate("jwt", { session: false }),
   asyncHandler(uploads.uploadImg)
+);
+
+app.post(
+  "/project/update",
+  passport.authenticate("jwt", { session: false }),
+  asyncHandler(projects.updateProject)
 );
 
 /**
