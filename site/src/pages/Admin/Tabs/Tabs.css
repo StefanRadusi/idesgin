@@ -2,6 +2,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .tabs-header {
@@ -10,5 +11,7 @@
 }
 
 .tabs-body {
-  flex: 1 1 auto;
+  flex: 1;
+  flex-basis: 0;
+  min-height: 0;
 }

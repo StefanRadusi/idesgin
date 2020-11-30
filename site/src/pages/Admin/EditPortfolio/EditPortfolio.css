@@ -1,5 +1,9 @@
 .edit-portfolio {
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 40px);
+  overflow: hidden;
 }
 
 .add-project-button {
@@ -18,4 +22,9 @@
 .edit-portfolio-tabs-body {
   display: flex;
   flex-direction: column;
+}
+
+.edit-portfolio__projects-container {
+  flex: 1;
+  overflow: auto;
 }

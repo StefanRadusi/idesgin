@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Link, Route, withRouter } from "react-router-dom";
+import React from "react";
+import { Link, Redirect, Route, withRouter } from "react-router-dom";
 import { EditPortfolio } from "../EditPortfolio";
 
 import "./Tabs.css";
@@ -9,17 +9,17 @@ export function isTabSelected(path, buttonName) {
   return path.includes(buttonName);
 }
 
-export const Tabs = withRouter(({ location: { pathname }, history }) => {
-  useEffect(() => {
-    if (pathname === "/admin" || pathname === "/admin/") {
-      history.push("/admin/edit-portfolio");
-    }
-  }, [pathname, history]);
+const shouldRedirect = (pathname) => {
+  if (pathname === "/admin" || pathname === "/admin/") return true;
 
+  return false;
+};
+
+export const Tabs = withRouter(({ location: { pathname } }) => {
   return (
     <div className="tabs">
       <div className="tabs-header">
-        <Link to="/admin/edit-portfolio">
+        <Link to="/admin/edit-portfolio/residential">
           <TabsHeaderButton
             label={"Portfolio"}
             selected={isTabSelected(pathname, "edit-portfolio")}
@@ -41,7 +41,14 @@ export const Tabs = withRouter(({ location: { pathname }, history }) => {
         </Link>
       </div>
       <div className="tabs-body">
-        <Route path="/admin/edit-portfolio" component={EditPortfolio} />
+        {shouldRedirect(pathname) ? (
+          <Redirect to="/admin/edit-portfolio/residential" />
+        ) : (
+          <Route
+            path="/admin/edit-portfolio/:projectType"
+            component={EditPortfolio}
+          />
+        )}
       </div>
     </div>
   );

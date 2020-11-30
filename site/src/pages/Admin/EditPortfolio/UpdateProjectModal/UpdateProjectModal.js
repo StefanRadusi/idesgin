@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Loading } from "../../../../common/Loading";
 import { updateProject } from "../../../../utils/api";
 import { mergeCssClass } from "../../../../utils/helpers";
@@ -46,44 +46,86 @@ const handleSaveProject = (
   tags,
   imgSrc,
   imgType,
-  setLoading
+  setLoading,
+  hideModal,
+  reFetchProjects
 ) => {
   return () => {
-    const [, imgData] = imgSrc.split(",");
-    setLoading(true);
-    updateProject({
+    const payload = {
       id,
       title,
       type,
       description,
       tags,
-      imgType,
-      imgData,
-    })
+    };
+
+    if (imgType !== "url") {
+      const [, imgData] = imgSrc.split(",");
+
+      payload.imgType = imgType;
+      payload.imgData = imgData;
+    }
+
+    console.log(payload);
+
+    setLoading(true);
+    updateProject(payload)
       .then(() => {
         setLoading(false);
+        hideModal();
+        reFetchProjects();
       })
       .catch((error) => {
         console.log(error);
         setLoading(false);
+        hideModal();
       });
   };
 };
 
-export const UpdateProjectModal = ({ show, hideModal, type, id }) => {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [tags, setTags] = useState([]);
+export const UpdateProjectModal = ({
+  show,
+  hideModal,
+  type,
+  currentProject,
+  reFetchProjects,
+}) => {
+  const {
+    id,
+    title: currentTitle,
+    description: currentDescription,
+    tags: currentTags,
+    coverImageUrl,
+  } = currentProject || {};
+
+  const [title, setTitle] = useState(currentTitle || "");
+  const [description, setDescription] = useState(currentDescription || "");
+  const [tags, setTags] = useState(currentTags || []);
   const [imgSrc, setImgSrc] = useState("");
   const [imgType, setImgType] = useState();
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setTitle(currentTitle || "");
+    setDescription(currentDescription || "");
+    setTags(currentTags || []);
+    if (coverImageUrl) {
+      setImgSrc(coverImageUrl);
+      setImgType("url");
+    } else {
+      setImgSrc("");
+      setImgType("");
+    }
+  }, [currentTitle, currentDescription, currentTags, coverImageUrl, show]);
 
   return (
     show && (
       <div className="add-project-modal">
         <div className="add-project-modal__overlay" />
         <div className="add-project-modal__content">
-          <h3 className="add-project-modal__title">Add project</h3>
+          <h3 className="add-project-modal__title">
+            {currentProject ? "Edit project" : "Add project"}
+          </h3>
           <div className="add-project-modal__attributes">
             <div className="add-project-modal__cover">
               {imgSrc && (
@@ -175,10 +217,12 @@ export const UpdateProjectModal = ({ show, hideModal, type, id }) => {
                 tags,
                 imgSrc,
                 imgType,
-                setLoading
+                setLoading,
+                hideModal,
+                reFetchProjects
               )}
             >
-              Add
+              {currentProject ? "Save" : "Add"}
             </button>
           </div>
           <Loading show={loading} />

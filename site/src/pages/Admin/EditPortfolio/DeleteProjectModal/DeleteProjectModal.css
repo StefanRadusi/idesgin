@@ -1,0 +1,53 @@
+.delete-project-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.delete-project-modal__overlay {
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.delete-project-modal__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+}
+
+.delete-project-modal__content__message {
+  display: flex;
+  width: 100%;
+}
+
+.delete-project-modal__content__message__text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.delete-project-modal__content__message img {
+  height: 100px;
+}
+
+.delete-project-modal__content__message p {
+  text-align: center;
+  width: 100%;
+}
+
+.delete-project-modal__content__message__proj-title {
+  font-weight: bold;
+}

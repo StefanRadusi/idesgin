@@ -45,6 +45,10 @@ export const Loading = ({ show }) => {
         setLoadingCssState("");
       }, 350);
     }
+
+    return () => {
+      clearInterval(interval.current);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [show]);
 

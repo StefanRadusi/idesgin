@@ -1,38 +1,56 @@
-import React, { useState } from "react";
-import { UploadButton } from "./UploadButton";
+import React, { useEffect, useState } from "react";
 
 import "./EditPortfolio.css";
-import { uploadImg } from "../../../utils/api";
-import { Link, Route, withRouter } from "react-router-dom";
+import { Link, useParams, withRouter } from "react-router-dom";
 import { TabsHeaderButton } from "../Tabs/TabsHeaderButton";
 import { isTabSelected } from "../Tabs";
 import { UpdateProjectModal } from "./UpdateProjectModal";
+import { Loading } from "../../../common/Loading";
+import { getProjectsByType } from "../../../utils/api";
+import { ProjectBox } from "./ProjectBox";
+import { DeleteProjectModal } from "./DeleteProjectModal/DeleteProjectModal";
+
+const getProject = (type, setProjects, setLoadingProjects) => {
+  setLoadingProjects(true);
+  getProjectsByType(type)
+    .then((response) => {
+      console.log(response);
+      const { projects } = response || {};
+      setProjects(projects || []);
+
+      setLoadingProjects(false);
+    })
+    .catch((error) => {
+      console.error(error);
+      setLoadingProjects(false);
+    });
+};
+
+const useGetProjects = (setLoadingProjects, projectType) => {
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    console.log("get projects", projectType);
+    getProject(projectType, setProjects, setLoadingProjects);
+  }, [projectType, setLoadingProjects]);
+
+  return [projects, setProjects];
+};
 
 export const EditPortfolio = withRouter(({ location: { pathname } }) => {
-  const [showEditProjectModal, setShowEditProjectModal] = useState(true);
+  let { projectType } = useParams();
 
-  // function onChange(event) {
-  //   const [file] = event.target.files;
-  //   console.log(file);
-  //   const reader = new FileReader();
-  //   reader.onload = (event) => {
-  //     // console.log(event.target.result);
-  //     const data = event.target.result.substr(
-  //       event.target.result.indexOf("base64,") + 7
-  //     );
-  //     console.log(file.name);
-  //     uploadImg({
-  //       name: file.name,
-  //       type: file.type,
-  //       data,
-  //     });
-  //   };
-  //   reader.readAsDataURL(file);
-  // }
+  const [showEditProjectModal, setShowEditProjectModal] = useState(false);
+  const [showDeleteProjectModal, setShowDeleteProjectModal] = useState(false);
+  const [loadingProjects, setLoadingProjects] = useState(false);
+  const [currentProject, setCurrentProject] = useState();
+  const [projects, setProjects] = useGetProjects(
+    setLoadingProjects,
+    projectType
+  );
 
   return (
     <div className="edit-portfolio">
-      {/* <UploadButton onChange={onChange} /> */}
       <div className="tabs-header portfolio-tab-header">
         <Link to="/admin/edit-portfolio/residential">
           <TabsHeaderButton
@@ -50,16 +68,62 @@ export const EditPortfolio = withRouter(({ location: { pathname } }) => {
       <div className="tabs-body edit-portfolio-tabs-body">
         <button
           className="add-project-button"
-          onClick={() => setShowEditProjectModal(true)}
+          onClick={() => {
+            setCurrentProject(null);
+            setShowEditProjectModal(true);
+          }}
         >
           add project
         </button>
-        <UpdateProjectModal
-          show={showEditProjectModal}
-          hideModal={() => setShowEditProjectModal(false)}
-          type="commercial"
-        />
+
+        <div className="edit-portfolio__projects-container">
+          {projects.map((project) => {
+            const { id, title, coverImageUrl, description, tags } = project;
+            return (
+              <ProjectBox
+                key={id}
+                title={title}
+                coverUrl={coverImageUrl}
+                description={description}
+                tags={tags}
+                openEditModal={() => {
+                  setShowEditProjectModal(true);
+                  setCurrentProject(project);
+                }}
+                showDeleteProjectModal={() => {
+                  setCurrentProject(project);
+                  setShowDeleteProjectModal(true);
+                }}
+              />
+            );
+          })}
+        </div>
+        <Loading show={loadingProjects} />
       </div>
+      <UpdateProjectModal
+        show={showEditProjectModal}
+        hideModal={() => {
+          setCurrentProject(null);
+          setShowEditProjectModal(false);
+        }}
+        type={projectType}
+        currentProject={currentProject}
+        reFetchProjects={() =>
+          getProject(projectType, setProjects, setLoadingProjects)
+        }
+      />
+      <DeleteProjectModal
+        show={showDeleteProjectModal}
+        hide={() => {
+          setCurrentProject(null);
+          setShowDeleteProjectModal(false);
+        }}
+        projectId={currentProject && currentProject.id}
+        projectTitle={currentProject && currentProject.title}
+        reFetchProjects={() =>
+          getProject(projectType, setProjects, setLoadingProjects)
+        }
+      />
     </div>
   );
 });

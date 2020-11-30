@@ -55,6 +55,8 @@ app.get(`/test/`, (req, res) => {
   res.status(200).send("Request received");
 });
 
+app.get("/projects/:type", asyncHandler(projects.getByType));
+
 /**
  * Routes - Protected
  */
@@ -75,6 +77,12 @@ app.post(
   "/project/update",
   passport.authenticate("jwt", { session: false }),
   asyncHandler(projects.updateProject)
+);
+
+app.delete(
+  "/project/:id",
+  passport.authenticate("jwt", { session: false }),
+  asyncHandler(projects.deleteProject)
 );
 
 /**

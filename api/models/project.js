@@ -45,31 +45,77 @@ const addProject = async (
   return params.Item;
 };
 
-const updateProject = async (id, title, type, description, tags) => {
+const updateProject = async (
+  id,
+  title,
+  type,
+  description,
+  tags,
+  coverImageUrl
+) => {
+  let UpdateExpression =
+    "set title = :title, #tp = :type_proj, description = :description, tags = :tags, updatedAt = :updatedAt";
+
+  const ExpressionAttributeValues = {
+    ":title": title,
+    ":type_proj": type,
+    ":description": description,
+    ":tags": tags,
+    ":updatedAt": Date.now(),
+  };
+
+  const ExpressionAttributeNames = {
+    "#tp": "type",
+  };
+
+  if (coverImageUrl) {
+    UpdateExpression = `${UpdateExpression}, coverImageUrl = :coverImageUrl`;
+    ExpressionAttributeValues[":coverImageUrl"] = coverImageUrl;
+  }
+
   const params = {
     TableName: process.env.projects_db,
     Key: {
       pk: id,
     },
-    UpdateExpression:
-      "set title = :title, #tp = :type_proj, description = :description, tags = :tags, updatedAt = :updatedAt",
-    ExpressionAttributeValues: {
-      ":title": title,
-      ":type_proj": type,
-      ":description": description,
-      ":tags": tags,
-      ":updatedAt": Date.now(),
-    },
+    UpdateExpression,
+    ExpressionAttributeValues,
+    ExpressionAttributeNames,
+  };
+
+  return await dynamodb.update(params).promise();
+};
+
+const getByType = async (type) => {
+  const params = {
+    TableName: process.env.projects_db,
+    FilterExpression: "#tp = :t",
+    ExpressionAttributeValues: { ":t": type },
     ExpressionAttributeNames: {
       "#tp": "type",
     },
   };
 
-  return await dynamodb.update(params).promise();
+  const result = await dynamodb.scan(params).promise();
+
+  return result && result.Items;
+};
+
+const deleteById = async (id) => {
+  const params = {
+    TableName: process.env.projects_db,
+    Key: {
+      pk: id,
+    },
+  };
+
+  return await dynamodb.delete(params).promise();
 };
 
 module.exports = {
   getProjectById,
   addProject,
   updateProject,
+  getByType,
+  deleteById,
 };

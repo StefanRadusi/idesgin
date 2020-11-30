@@ -39,6 +39,16 @@ export const updateProject = (payload) => {
   });
 };
 
+export const getProjectsByType = (type) => {
+  return requestApi(`/projects/${type}`);
+};
+
+export const deleteProject = (id) => {
+  return requestApi(`/project/${id}`, "DELETE", null, {
+    Authorization: `Bearer ${localStorage.getItem("token")}`,
+  });
+};
+
 /**
  * API request to call the backend
  */
