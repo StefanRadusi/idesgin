@@ -1,0 +1,169 @@
+.page-cover {
+  width: 100%;
+  height: 100%;
+}
+
+.page-cover__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.page-cover__overlay {
+  background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.page-cover__title-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -80%);
+}
+
+.page-cover__front-text-container,
+.page-cover__back-text-container {
+  overflow: hidden;
+}
+
+.page-cover__front-text,
+.page-cover__back-text {
+  font-size: 100px;
+  font-weight: bold;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+.page-cover__front-text {
+  /* transform: translateY(-40px); */
+  transform: translateY(-110px);
+}
+
+.page-cover__back-text {
+  color: white;
+  transform: translateY(110px);
+  transition: color 0.3s ease 1.5s;
+}
+
+.page-cover__description {
+  width: 140%;
+  position: absolute;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease 1.5s;
+}
+
+.page-cover__line {
+  background: white;
+  width: 0%;
+  height: 2px;
+  border-radius: 4px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -80%);
+}
+
+.line-animation {
+  animation: lineAnimation 1s ease 0.5s;
+}
+
+.front-text-animation {
+  animation: frontAnimation 1s ease 0.7s forwards;
+}
+
+.front-text-container-animation {
+  animation: frontAnimationContainer 1s ease 1s forwards;
+}
+
+.back-text-animation {
+  animation: backAnimation 1s ease 0.7s forwards;
+}
+
+.back-text-container-animation {
+  animation: backAnimationContainer 1s ease 1s forwards;
+}
+
+.description-animation {
+  opacity: 1;
+}
+
+.page-cover__back-text-animation {
+  color: #f1b434;
+}
+
+@keyframes lineAnimation {
+  0% {
+    width: 0%;
+  }
+
+  25% {
+    width: 100%;
+  }
+
+  75% {
+    width: 100%;
+  }
+
+  100% {
+    width: 0%;
+  }
+}
+
+@keyframes frontAnimation {
+  0% {
+    transform: translateY(-110px);
+  }
+
+  50% {
+    transform: translateY(0px);
+  }
+
+  100% {
+    transform: translateY(-40px);
+  }
+}
+
+@keyframes frontAnimationContainer {
+  0% {
+    overflow: hidden;
+  }
+
+  100% {
+    overflow: visible;
+  }
+}
+
+@keyframes backAnimation {
+  0% {
+    transform: translateY(110px);
+  }
+
+  50% {
+    transform: translateY(0px);
+  }
+
+  100% {
+    transform: translateY(40px);
+  }
+}
+
+@keyframes backAnimationContainer {
+  0% {
+    overflow: hidden;
+  }
+
+  100% {
+    overflow: visible;
+  }
+}
