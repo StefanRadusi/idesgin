@@ -28,7 +28,7 @@ const onScroll = (circleRef, setScaleValue) => {
       const { top, height } = circleRef.current.getBoundingClientRect();
 
       const scaleValue = Math.floor((-(top - 600) / 500) * 100) / 100;
-      console.log(scaleValue);
+
       if (scaleValue > 0 && scaleValue <= 1) {
         setScaleValue(scaleValue);
       } else if (scaleValue <= 0) {

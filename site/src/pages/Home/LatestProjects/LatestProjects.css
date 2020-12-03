@@ -5,14 +5,14 @@
   flex-wrap: wrap;
 }
 
+.projects-list__title-container,
 .projects-list__project-cover-container {
   flex: 1;
   display: flex;
+  min-width: 40%;
 }
 
 .projects-list__title-container {
-  flex: 1;
-  display: flex;
   justify-content: flex-end;
   margin-right: 10px;
 }
