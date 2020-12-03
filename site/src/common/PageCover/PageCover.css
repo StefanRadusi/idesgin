@@ -44,6 +44,7 @@
 .page-cover__front-text {
   /* transform: translateY(-40px); */
   transform: translateY(-110px);
+  color: white;
 }
 
 .page-cover__back-text {
@@ -60,6 +61,7 @@
   transform: translateX(-50%);
   text-align: center;
   opacity: 0;
+  color: white;
   transition: opacity 0.3s ease 1.5s;
 }
 

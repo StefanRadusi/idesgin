@@ -4,6 +4,10 @@
   cursor: pointer;
 }
 
+.tabs-header-button p {
+  color: white;
+}
+
 .tabs-header-button:first-child {
   margin-left: 0px;
 }

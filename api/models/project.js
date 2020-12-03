@@ -87,6 +87,23 @@ const updateProject = async (
 };
 
 const getByType = async (type) => {
+  if (type === "latest") {
+    const result = await dynamodb
+      .scan({
+        TableName: process.env.projects_db,
+      })
+      .promise();
+
+    return (
+      result &&
+      result.Items &&
+      result.Items.sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1)).slice(
+        0,
+        3
+      )
+    );
+  }
+
   const params = {
     TableName: process.env.projects_db,
     FilterExpression: "#tp = :t",

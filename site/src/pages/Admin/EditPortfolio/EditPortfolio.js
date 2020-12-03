@@ -16,7 +16,9 @@ const getProject = (type, setProjects, setLoadingProjects) => {
     .then((response) => {
       console.log(response);
       const { projects } = response || {};
-      setProjects(projects || []);
+      setProjects(
+        (projects || []).sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1))
+      );
 
       setLoadingProjects(false);
     })

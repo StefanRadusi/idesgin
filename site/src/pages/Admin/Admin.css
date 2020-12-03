@@ -1,3 +1,5 @@
 .admin {
   background: black;
+  display: flex;
+  font-size: 12px;
 }

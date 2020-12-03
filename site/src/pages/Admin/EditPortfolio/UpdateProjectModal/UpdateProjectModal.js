@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Loading } from "../../../../common/Loading";
 import { updateProject } from "../../../../utils/api";
 import { mergeCssClass } from "../../../../utils/helpers";
+import { resizeImg } from "./ImgResizer";
 
 import "./UpdateProjectModal.css";
 
@@ -22,18 +23,12 @@ const toggleTag = (tag, tags, setTags) => {
 const canSaveProject = (title, imgSrc) => !!(title && imgSrc);
 
 const handleUploadImg = (imgSrc, setImgSrc, setImgType) => {
-  return ({ target }) => {
+  return async ({ target }) => {
     const [file] = target.files;
     if (file) {
-      const reader = new FileReader();
-
-      reader.onload = () => {
-        if (reader.result !== imgSrc) {
-          setImgSrc(reader.result);
-          setImgType(file.type);
-        }
-      };
-      reader.readAsDataURL(file);
+      const image = await resizeImg(file);
+      setImgSrc(image);
+      setImgType(file.type);
     }
   };
 };

@@ -12,6 +12,7 @@
   border: 1px solid white;
   margin: 5px;
   cursor: pointer;
+  color: white;
 }
 
 .add-project-button:hover {

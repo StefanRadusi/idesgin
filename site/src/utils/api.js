@@ -49,6 +49,10 @@ export const deleteProject = (id) => {
   });
 };
 
+export const getLatestProjects = () => {
+  return requestApi(`/projects/latest`);
+};
+
 /**
  * API request to call the backend
  */

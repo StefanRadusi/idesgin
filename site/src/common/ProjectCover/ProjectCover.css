@@ -1,0 +1,60 @@
+.project-cover {
+  width: 500px;
+  height: 650px;
+  background: grey;
+  margin-bottom: 20px;
+  overflow: hidden;
+  color: white;
+  background-size: cover;
+  background-position: center;
+}
+
+.project-cover__overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  transform: translateX(calc(100% - 80px));
+  transition: transform 0.3s ease;
+}
+
+.project-cover__title-container {
+  position: absolute;
+  top: 10px;
+  left: -40px;
+  width: 100%;
+  height: 30px;
+  transform: translateX(100%);
+}
+
+.project-cover__title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(90deg);
+  transform-origin: left;
+}
+
+.project-cover__description-container {
+  width: calc(100% - 100px);
+  padding-left: 20px;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.project-cover__description {
+  font-size: 18px;
+  text-align: right;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+
+.project-cover:hover .project-cover__description {
+  transform: translateX(0%);
+}
+
+.project-cover:hover .project-cover__overlay {
+  transform: translateX(0px);
+}

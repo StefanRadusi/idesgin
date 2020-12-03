@@ -8,6 +8,7 @@
 .tabs-header {
   display: flex;
   border-bottom: 2px solid white;
+  color: white;
 }
 
 .tabs-body {

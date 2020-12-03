@@ -1,0 +1,38 @@
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
+.header__logo {
+  height: 50px;
+  margin-left: 40px;
+}
+
+.header__facebook-link,
+.header__instagram-link {
+  height: 30px;
+  width: 30px;
+}
+
+.header__facebook-link {
+  margin-left: auto;
+}
+
+.header__instagram-link {
+  margin-right: 40px;
+  margin-left: 20px;
+  outline: none;
+}
+
+.header__facebook-link img,
+.header__instagram-link img {
+  width: 100%;
+  height: 100%;
+  filter: invert(1);
+}

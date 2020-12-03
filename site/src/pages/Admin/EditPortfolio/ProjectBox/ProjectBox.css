@@ -27,14 +27,17 @@
 
 .edit-portfolio__project__details__title {
   font-size: 30px;
+  color: white;
 }
 
 .edit-portfolio__project__details__description {
   flex: 1;
+  color: white;
 }
 
 .edit-portfolio__project__details__tags {
   margin-top: 20px;
+  color: white;
 }
 
 .edit-portfolio__project__buttons {

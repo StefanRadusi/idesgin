@@ -15,8 +15,6 @@ const updateProject = async (req, res) => {
         imgType
       );
 
-      console.log(coverImageUrl);
-
       await projectDB.updateProject(
         id,
         title,
