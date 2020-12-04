@@ -1,0 +1,24 @@
+.steps-work-thumbs {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.steps-work-thumbs__img {
+  width: 200px;
+  height: 200px;
+  box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2);
+  margin-right: 30px;
+}
+
+.steps-work-thumbs__text-container {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  padding-top: 20px;
+}
+
+.steps-work-thumbs__text-container p {
+  font-size: 18px;
+  margin-top: 10px;
+  color: grey;
+}

@@ -1,0 +1,26 @@
+.circle {
+  width: 100%;
+  height: 0px;
+  position: absolute;
+  top: -70%;
+  left: -45%;
+
+  z-index: -1;
+  transition: transform 0.1s linear;
+  transform-origin: center;
+}
+
+.circle::after {
+  content: "";
+  padding-top: 100%;
+  height: 0px;
+  display: block;
+  overflow: hidden;
+  background: #eeebea;
+  border-radius: 50%;
+}
+
+.circle__position--right-bottom {
+  top: unset;
+  left: 50%;
+}

@@ -22,7 +22,7 @@ const getRandomCubeFace = (currentCubeFace) => {
   return cubeFace;
 };
 
-export const Loading = ({ show }) => {
+export const Loading = ({ show, white }) => {
   const [cubeFace, setCubeFace] = useState("show-front");
   const [loadingCssState, setLoadingCssState] = useState("");
   const interval = useRef();
@@ -53,7 +53,13 @@ export const Loading = ({ show }) => {
   }, [show]);
 
   return (
-    <div className={mergeCssClass("loading-overlay", loadingCssState)}>
+    <div
+      className={mergeCssClass(
+        "loading-overlay",
+        loadingCssState,
+        white && "loading-white-theme"
+      )}
+    >
       <div className="loading">
         <div className={mergeCssClass("cube", cubeFace)}>
           <div className="cube__face cube__face--front" />

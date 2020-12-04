@@ -1,0 +1,23 @@
+.find-more-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.find-more {
+  display: flex;
+}
+
+.find-more__arrows {
+  margin-right: 10px;
+}
+
+.find-more__text {
+  font-size: 16px;
+}
+
+.find-more__text span {
+  font-size: 16px;
+  color: #f1b434;
+  font-weight: bold;
+}

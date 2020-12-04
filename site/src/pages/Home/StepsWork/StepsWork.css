@@ -1,0 +1,54 @@
+.steps-work-home-container {
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: 40px;
+}
+
+.steps-work-home {
+  width: 100%;
+  display: flex;
+  margin-top: 100px;
+  overflow: hidden;
+}
+
+.steps-work-home__thumbs,
+.steps-work-home__title {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.steps-work-home__title {
+  align-items: flex-start;
+}
+
+.steps-work-home__title__text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  border-right: 3px solid black;
+  padding-right: 10px;
+  width: 400px;
+  margin-top: 80px;
+  margin-left: 80px;
+}
+
+.steps-work-home__title__text {
+  text-align: right;
+  font-size: 30px;
+  font-weight: bold;
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+.steps-work-home__title__sub-text {
+  text-align: right;
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: grey;
+}
+
+.steps-work-home__find-more .find-more {
+  margin-top: 100px;
+}

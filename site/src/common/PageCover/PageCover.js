@@ -3,11 +3,15 @@ import { mergeCssClass } from "../../utils/helpers";
 
 import "./PageCover.css";
 
-export const PageCover = ({ src, backText, frontText, description }) => {
+export const PageCover = ({ src, backText, frontText, description, delay }) => {
   const [runAnimation, setRunAnimation] = useState(false);
+  console.log(delay);
 
   useEffect(() => {
-    setRunAnimation(true);
+    setTimeout(() => {
+      setRunAnimation(true);
+    }, delay * 1000 || 0);
+    // eslint-disable-next-line
   }, []);
 
   return (

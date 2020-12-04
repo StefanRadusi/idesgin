@@ -1,9 +1,11 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { getLatestProjects } from "../../../utils/api";
 import { ProjectCover } from "../../../common/ProjectCover/ProjectCover";
 
 import "./LatestProjects.css";
 import { mergeCssClass } from "../../../utils/helpers";
+import { CircleEffect } from "../../../common/CircleEffect";
+import { FindMore } from "../../../common/FindMore";
 
 const useGetLatestProject = () => {
   const [projects, setProjects] = useState([]);
@@ -22,42 +24,14 @@ const getCssClass = (index) =>
     ? "projects-list__project-cover--right"
     : "projects-list__project-cover--left";
 
-const onScroll = (circleRef, setScaleValue) => {
-  return () => {
-    if (circleRef.current) {
-      const { top, height } = circleRef.current.getBoundingClientRect();
-
-      const scaleValue = Math.floor((-(top - 600) / 500) * 100) / 100;
-
-      if (scaleValue > 0 && scaleValue <= 1) {
-        setScaleValue(scaleValue);
-      } else if (scaleValue <= 0) {
-        setScaleValue(0);
-      } else {
-        setScaleValue(1);
-      }
-    }
-  };
-};
-
 export const LatestProjects = () => {
   const latestProjects = useGetLatestProject();
-  const [scaleValue, setScaleValue] = useState(0);
-
-  const circleRef = useRef();
-
-  useEffect(() => {
-    window.addEventListener("scroll", onScroll(circleRef, setScaleValue));
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const compRef = useRef(null);
 
   return (
     latestProjects.length && (
-      <div className="projects-list" ref={circleRef}>
-        <div
-          className="projects-list__circle"
-          style={{ transform: `scale(${scaleValue})` }}
-        />
+      <div className="projects-list" ref={compRef}>
+        <CircleEffect parentRef={compRef} />
         <div className="projects-list__title-container">
           <div className="projects-list__title">
             <div className="projects-list__title__text-container">
@@ -81,14 +55,7 @@ export const LatestProjects = () => {
             <ProjectCover key={project.id} project={project} />
           </div>
         ))}
-        <div className="find-more-container">
-          <div className="find-more">
-            <img className="find-more__arrows" src="/svg/arrows.svg" />
-            <p className="find-more__text">
-              <span>FIND</span> OUT MORE
-            </p>
-          </div>
-        </div>
+        <FindMore text="FIND OUT MORE" className="latest-projects__find-more" />
       </div>
     )
   );
