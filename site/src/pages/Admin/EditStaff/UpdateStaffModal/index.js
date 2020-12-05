@@ -1,0 +1,1 @@
+export { UpdateStaffModal } from "./UpdateStaffModal";

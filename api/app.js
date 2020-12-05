@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const passport = require("passport");
-const { users, uploads, projects } = require("./controllers");
+const { users, uploads, projects, staff } = require("./controllers");
 
 /**
  * Configure Passport
@@ -57,6 +57,8 @@ app.get(`/test/`, (req, res) => {
 
 app.get("/projects/:type", asyncHandler(projects.getByType));
 
+app.get("/staff", asyncHandler(staff.getAll));
+
 /**
  * Routes - Protected
  */
@@ -83,6 +85,18 @@ app.delete(
   "/project/:id",
   passport.authenticate("jwt", { session: false }),
   asyncHandler(projects.deleteProject)
+);
+
+app.post(
+  "/staff/update",
+  passport.authenticate("jwt", { session: false }),
+  asyncHandler(staff.update)
+);
+
+app.delete(
+  "/staff/:id",
+  passport.authenticate("jwt", { session: false }),
+  asyncHandler(staff.deleteMember)
 );
 
 /**

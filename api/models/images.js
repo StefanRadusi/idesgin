@@ -1,12 +1,12 @@
 const AWS = require("aws-sdk");
 const s3 = new AWS.S3();
 
-const updateProjectCoverImg = async (projectId, imgData, imgType) => {
-  if (projectId && imgData && imgType) {
+const updateCoverImg = async (id, imgData, imgType) => {
+  if (id && imgData && imgType) {
     const buffer = Buffer.from(imgData, "base64");
 
     const [, extension] = imgType.split("/");
-    const Key = `${projectId}.${extension}`;
+    const Key = `${id}.${extension}`;
 
     await s3
       .putObject({
@@ -25,5 +25,5 @@ const updateProjectCoverImg = async (projectId, imgData, imgType) => {
 };
 
 module.exports = {
-  updateProjectCoverImg,
+  updateCoverImg,
 };

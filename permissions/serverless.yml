@@ -29,6 +29,8 @@ inputs:
         - ${output:database.arn}/index/*
         - ${output:projectstable.arn}
         - ${output:projectstable.arn}/index/*
+        - ${output:staff-table.arn}
+        - ${output:staff-table.arn}/index/*
     - Effect: Allow
       Action:
         - s3:*

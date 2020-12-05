@@ -1,13 +1,12 @@
-.add-project-modal {
+.edit-staff-modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  color: white;
 }
 
-.add-project-modal__overlay {
+.edit-staff-modal__overlay {
   width: 100%;
   height: 100%;
 
@@ -17,7 +16,7 @@
   background: rgba(0, 0, 0, 0.9);
 }
 
-.add-project-modal__content {
+.edit-staff-modal__content {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -28,12 +27,16 @@
   flex-direction: column;
 }
 
-.add-project-modal__attributes {
+.edit-staff-modal__title {
+  color: white;
+}
+
+.edit-staff-modal__attributes {
   flex: 1;
   display: flex;
 }
 
-.add-project-modal__cover {
+.edit-staff-modal__cover {
   margin: 10px;
   margin-left: 0px;
   border: 1px solid white;
@@ -46,7 +49,7 @@
   cursor: pointer;
 }
 
-.add-project-modal__cover__upload-input {
+.edit-staff-modal__cover__upload-input {
   position: absolute;
   top: 0;
   left: 0;
@@ -57,13 +60,13 @@
   cursor: pointer;
 }
 
-.add-project-modal__cover_img {
+.edit-staff-modal__cover_img {
   object-fit: cover;
   width: 100%;
   height: 100%;
 }
 
-.add-project-modal__cover_img--default {
+.edit-staff-modal__cover_img--default {
   position: absolute;
   width: 70%;
   height: 70%;
@@ -74,11 +77,11 @@
   transform: translate(-50%, -50%);
 }
 
-.add-project-modal__cover_img--with-img {
+.edit-staff-modal__cover_img--with-img {
   display: none;
 }
 
-.add-project-modal__cover:hover .add-project-modal__cover_img--with-img {
+.edit-staff-modal__cover:hover .edit-staff-modal__cover_img--with-img {
   display: block;
   top: unset;
   left: unset;
@@ -90,18 +93,21 @@
   filter: invert(1);
 }
 
-.add-project-modal__project-title {
+.edit-staff-modal__member-author,
+.edit-staff-modal__member-name {
   margin-bottom: 15px;
+  color: white;
 }
 
-.add-project-modal__attributes-container {
+.edit-staff-modal__attributes-container {
   margin-left: 10px;
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-.add-project-modal__project-title input {
+.edit-staff-modal__member-author input,
+.edit-staff-modal__member-name input {
   font-size: 16px;
   padding: 5px;
   width: calc(100% - 12px);
@@ -111,18 +117,20 @@
   transition: background 0.2s ease;
 }
 
-.add-project-modal__project-title input:focus {
+.edit-staff-modal__member-author input:focus,
+.edit-staff-modal__member-name input:focus {
   background: rgba(255, 255, 255, 0.2);
 }
 
-.add-project-modal__project-description {
+.edit-staff-modal__project-description {
   margin-bottom: 15px;
   flex: 1;
   display: flex;
   flex-direction: column;
+  color: white;
 }
 
-.add-project-modal__project-description textarea {
+.edit-staff-modal__project-description textarea {
   width: calc(100% - 12px);
   background: rgba(255, 255, 255, 0.1);
   padding: 5px;
@@ -135,31 +143,11 @@
   flex: 1;
 }
 
-.add-project-modal__project-description textarea:focus {
+.edit-staff-modal__project-description textarea:focus {
   background: rgba(255, 255, 255, 0.2);
 }
 
-.add-project-modal__project-tags-container {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.add-project-modal__project-tags__tag {
-  border: 1px solid white;
-  padding: 5px 15px;
-  margin: 10px 15px 10px 0px;
-  font-size: 16px;
-  cursor: pointer;
-  color: white;
-}
-
-.add-project-modal__project-tags__tag--selected {
-  background: white;
-  color: black;
-}
-
-.add-project-modal__buttons {
+.edit-staff-modal__buttons {
   margin: 10px;
   padding: 10px;
   border-top: 1px solid white;
@@ -167,8 +155,8 @@
   justify-content: flex-end;
 }
 
-.add-project-modal__buttons__button-apply,
-.add-project-modal__buttons__button-cancel {
+.edit-staff-modal__buttons__button-apply,
+.edit-staff-modal__buttons__button-cancel {
   background: none;
   outline: none;
   border: 1px solid white;
@@ -178,7 +166,7 @@
   color: white;
 }
 
-.add-project-modal__buttons__button-apply {
+.edit-staff-modal__buttons__button-apply {
   background: white;
   color: black;
   opacity: 0.5;
@@ -186,7 +174,7 @@
   pointer-events: none;
 }
 
-.add-project-modal__buttons__button-apply--enable {
+.edit-staff-modal__buttons__button-apply--enable {
   opacity: 1;
   pointer-events: all;
 }

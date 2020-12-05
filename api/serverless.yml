@@ -13,6 +13,7 @@ inputs:
     # AWS DynamoDB Table name. Needed for the code to access it.
     db: ${output:database.name}
     projects_db: ${output:projectstable.name}
+    staff_db: ${output:staff-table.name}
     # AWS DynamoDB Table Index name. Needed for the code to access it.
     dbIndex1: ${output:database.indexes.gsi1.name}
     # A secret token to sign the JWT tokens with.

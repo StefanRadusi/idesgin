@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Loading } from "../../../../common/Loading";
 import { updateProject } from "../../../../utils/api";
-import { mergeCssClass } from "../../../../utils/helpers";
-import { resizeImg } from "./ImgResizer";
+import { mergeCssClass, resizeImg } from "../../../../utils/helpers";
 
 import "./UpdateProjectModal.css";
 

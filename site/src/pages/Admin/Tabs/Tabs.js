@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, Redirect, Route, withRouter } from "react-router-dom";
 import { EditPortfolio } from "../EditPortfolio";
+import { EditStaff } from "../EditStaff";
 
 import "./Tabs.css";
 import { TabsHeaderButton } from "./TabsHeaderButton";
@@ -44,10 +45,13 @@ export const Tabs = withRouter(({ location: { pathname } }) => {
         {shouldRedirect(pathname) ? (
           <Redirect to="/admin/edit-portfolio/residential" />
         ) : (
-          <Route
-            path="/admin/edit-portfolio/:projectType"
-            component={EditPortfolio}
-          />
+          <React.Fragment>
+            <Route
+              path="/admin/edit-portfolio/:projectType"
+              component={EditPortfolio}
+            />
+            <Route path="/admin/edit-staff" component={EditStaff} />
+          </React.Fragment>
         )}
       </div>
     </div>

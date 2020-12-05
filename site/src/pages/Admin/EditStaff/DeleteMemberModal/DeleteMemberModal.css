@@ -1,4 +1,4 @@
-.delete-project-modal {
+.delete-member-modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -6,7 +6,7 @@
   height: 100%;
 }
 
-.delete-project-modal__overlay {
+.delete-member-modal__overlay {
   width: 100%;
   height: 100%;
 
@@ -16,7 +16,7 @@
   background: rgba(0, 0, 0, 0.9);
 }
 
-.delete-project-modal__content {
+.delete-member-modal__content {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -27,12 +27,12 @@
   flex-direction: column;
 }
 
-.delete-project-modal__content__message {
+.delete-member-modal__content__message {
   display: flex;
   width: 100%;
 }
 
-.delete-project-modal__content__message__text {
+.delete-member-modal__content__message__text {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -40,15 +40,15 @@
   color: white;
 }
 
-.delete-project-modal__content__message img {
+.delete-member-modal__content__message img {
   height: 100px;
 }
 
-.delete-project-modal__content__message p {
+.delete-member-modal__content__message p {
   text-align: center;
   width: 100%;
 }
 
-.delete-project-modal__content__message__proj-title {
+.delete-member-modal__content__message__member-name {
   font-weight: bold;
 }

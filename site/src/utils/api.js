@@ -39,8 +39,18 @@ export const updateProject = (payload) => {
   });
 };
 
+export const updateStaff = (payload) => {
+  return requestApi("/staff/update", "POST", payload, {
+    Authorization: `Bearer ${localStorage.getItem("token")}`,
+  });
+};
+
 export const getProjectsByType = (type) => {
   return requestApi(`/projects/${type}`);
+};
+
+export const getStaffMembers = () => {
+  return requestApi(`/staff`);
 };
 
 export const deleteProject = (id) => {
@@ -51,6 +61,12 @@ export const deleteProject = (id) => {
 
 export const getLatestProjects = () => {
   return requestApi(`/projects/latest`);
+};
+
+export const deleteStaffMember = (id) => {
+  return requestApi(`/staff/${id}`, "DELETE", null, {
+    Authorization: `Bearer ${localStorage.getItem("token")}`,
+  });
 };
 
 /**
