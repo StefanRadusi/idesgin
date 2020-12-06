@@ -1,0 +1,11 @@
+.menu {
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  z-index: 1;
+}
+
+.menu.menu--white .menu-item span,
+.menu.menu--white .menu-item p {
+  color: white;
+}

@@ -8,7 +8,6 @@ export const HomeCover = () => {
       backText="OUR"
       frontText="MISSION"
       description="iDesign Studio's mission is to design and implement functionally-aesthetically balanced spaces tailored to the client's personality traits."
-      delay={2}
     />
   );
 };

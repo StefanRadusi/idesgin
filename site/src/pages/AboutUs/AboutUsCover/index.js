@@ -1,0 +1,1 @@
+export { AboutUsCover } from "./AboutUsCover";

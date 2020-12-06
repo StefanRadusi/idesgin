@@ -1,0 +1,35 @@
+.menu-item p {
+  color: black;
+  font-size: 14px;
+  padding: 5px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.menu-item span {
+  color: black;
+  font-size: 14px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.menu-item img {
+  position: absolute;
+  top: 10px;
+  left: -20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  height: 10px;
+}
+
+.menu-item--selected img {
+  opacity: 1;
+}
+
+.menu-item--selected span {
+  color: #f1b434;
+}
+
+.menu.menu--white .menu-item--selected span {
+  color: #f1b434;
+}

@@ -34,7 +34,12 @@ export const StepsWork = () => {
 
   return (
     <div className="steps-work-home-container" ref={compRef}>
-      <CircleEffect position="right-bottom" parentRef={compRef} />
+      <CircleEffect
+        position="right-bottom"
+        parentRef={compRef}
+        width="150%"
+        breakpoint={1500}
+      />
       <div className="steps-work-home">
         <div className="steps-work-home__thumbs">
           {steps.map((step) => (

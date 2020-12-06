@@ -1,11 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import "./Header.css";
 
 export const Header = () => {
   return (
     <div className="header">
-      <img className="header__logo" alt="logo" src="/svg/logo.svg" />
+      <Link to="/">
+        <img className="header__logo" alt="logo" src="/svg/logo.svg" />
+      </Link>
+
       <a
         href="https://www.facebook.com/idizainstudio"
         className="header__facebook-link"

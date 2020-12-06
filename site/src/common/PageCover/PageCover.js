@@ -5,7 +5,6 @@ import "./PageCover.css";
 
 export const PageCover = ({ src, backText, frontText, description, delay }) => {
   const [runAnimation, setRunAnimation] = useState(false);
-  console.log(delay);
 
   useEffect(() => {
     setTimeout(() => {
@@ -28,8 +27,7 @@ export const PageCover = ({ src, backText, frontText, description, delay }) => {
           <p
             className={mergeCssClass(
               "page-cover__back-text",
-              runAnimation &&
-                "back-text-animation page-cover__back-text-animation"
+              runAnimation && "back-text-animation"
             )}
           >
             {backText}

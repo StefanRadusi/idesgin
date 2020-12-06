@@ -1,15 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { mergeCssClass } from "../../utils/helpers";
 
 import "./CircleEffect.css";
 
-const onScroll = (parentRef, setScaleValue) => {
-  return () => {
-    if (parentRef && parentRef.current) {
-      const { top } = parentRef.current.getBoundingClientRect();
-      console.log(top);
+const DEFAULT_RANGE = 300;
 
-      const scaleValue = Math.floor((-(top - 600) / 500) * 100) / 100;
+const onScroll = (compRef, setScaleValue, position, breakpoint) => {
+  return () => {
+    if (compRef && compRef.current) {
+      const { top, height, bottom } = compRef.current.getBoundingClientRect();
+
+      let x = top + height * 0.5;
+      if (position === "right-bottom") {
+        x = bottom - height / 2 - (breakpoint || 1300);
+      }
+
+      const scaleValue =
+        Math.floor(((x - DEFAULT_RANGE) / -DEFAULT_RANGE) * 100) / 100;
 
       window.requestAnimationFrame(() => {
         if (scaleValue > 0 && scaleValue <= 1) {
@@ -34,19 +41,30 @@ const getCssClassByPosition = (position) => {
   }
 };
 
-export const CircleEffect = ({ position, parentRef }) => {
+export const CircleEffect = ({ position, width, breakpoint }) => {
   const [scaleValue, setScaleValue] = useState(0);
 
+  const compRef = useRef(null);
+
   useEffect(() => {
-    window.addEventListener("scroll", onScroll(parentRef, setScaleValue));
+    window.addEventListener(
+      "scroll",
+      onScroll(compRef, setScaleValue, position, breakpoint)
+    );
     return () => window.removeEventListener("scroll", onScroll);
     // eslint-disable-next-line
   }, []);
 
+  const translate =
+    position === "right-bottom"
+      ? "translate(60%, 60%)"
+      : "translate(-60%, -60%)";
+
   return (
     <div
+      ref={compRef}
       className={mergeCssClass("circle", getCssClassByPosition(position))}
-      style={{ transform: `scale(${scaleValue})` }}
+      style={{ transform: `${translate} scale(${scaleValue})`, width: width }}
     />
   );
 };

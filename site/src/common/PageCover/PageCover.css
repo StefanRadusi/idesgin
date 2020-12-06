@@ -42,7 +42,6 @@
 }
 
 .page-cover__front-text {
-  /* transform: translateY(-40px); */
   transform: translateY(-110px);
   color: white;
 }
@@ -62,7 +61,6 @@
   text-align: center;
   opacity: 0;
   color: white;
-  transition: opacity 0.3s ease 1.5s;
 }
 
 .page-cover__line {
@@ -97,11 +95,7 @@
 }
 
 .description-animation {
-  opacity: 1;
-}
-
-.page-cover__back-text-animation {
-  color: #f1b434;
+  animation: descriptionAnimation 0.3s ease 1.5s forwards;
 }
 
 @keyframes lineAnimation {
@@ -149,14 +143,17 @@
 @keyframes backAnimation {
   0% {
     transform: translateY(110px);
+    color: white;
   }
 
   50% {
     transform: translateY(0px);
+    color: white;
   }
 
   100% {
     transform: translateY(40px);
+    color: #f1b434;
   }
 }
 
@@ -167,5 +164,15 @@
 
   100% {
     overflow: visible;
+  }
+}
+
+@keyframes descriptionAnimation {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }
