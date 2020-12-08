@@ -219,8 +219,8 @@ export const UpdateProjectModal = ({
               {currentProject ? "Save" : "Add"}
             </button>
           </div>
-          <Loading show={loading} />
         </div>
+        <Loading show={loading} />
       </div>
     )
   );

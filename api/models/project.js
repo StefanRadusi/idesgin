@@ -104,6 +104,16 @@ const getByType = async (type) => {
     );
   }
 
+  if (type === "all") {
+    const result = await dynamodb
+      .scan({
+        TableName: process.env.projects_db,
+      })
+      .promise();
+
+    return result && result.Items;
+  }
+
   const params = {
     TableName: process.env.projects_db,
     FilterExpression: "#tp = :t",

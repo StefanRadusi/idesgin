@@ -13,6 +13,10 @@ const pages = [
     path: "/about",
     label: "ABOUT US",
   },
+  {
+    path: "/portfolio",
+    label: "PORTFOLIO",
+  },
 ];
 
 const useOnScroll = () => {

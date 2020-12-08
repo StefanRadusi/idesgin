@@ -5,26 +5,15 @@ import { Home } from "./pages/Home";
 import { AboutUs } from "./pages/AboutUs/AboutUs";
 import { Admin } from "./pages/Admin";
 
-import { Loading } from "./common/Loading";
-
 import "./App.css";
 import Menu from "./navigation/Menu/Menu";
 import { Transition } from "./navigation/Transition";
 import { Header } from "./common/Header";
+import { Portfolio } from "./pages/Portfolio/Portfolio";
 
 export const App = () => {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-  }, []);
-
   return (
     <React.Fragment>
-      {/* <Loading show={loading} white /> */}
-
       <div className="router-container">
         <Router>
           <Header />
@@ -44,6 +33,14 @@ export const App = () => {
             children={(props) => (
               <Transition {...props}>
                 <AboutUs />
+              </Transition>
+            )}
+          />
+          <Route
+            path="/portfolio"
+            children={(props) => (
+              <Transition {...props}>
+                <Portfolio />
               </Transition>
             )}
           />

@@ -15,7 +15,10 @@ export const PageCover = ({ src, backText, frontText, description, delay }) => {
 
   return (
     <div className="page-cover">
-      <img src={src} alt="cover img" className="page-cover__img" />
+      <div
+        className="page-cover__img"
+        style={{ backgroundImage: `url("${src}"` }}
+      />
       <div className="page-cover__overlay" />
       <div className="page-cover__title-container">
         <div

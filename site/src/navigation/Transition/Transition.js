@@ -28,8 +28,9 @@ export const Transition = ({ match, children }) => {
         setHide(true);
         setOnLeft(false);
         setOnRight(true);
-      }, 700);
+      }, 800);
     }
+    // eslint-disable-next-line
   }, [match]);
 
   return (

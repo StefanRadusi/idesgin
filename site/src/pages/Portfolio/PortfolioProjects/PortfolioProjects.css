@@ -1,0 +1,72 @@
+.portfolio-projects-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  align-items: center;
+}
+
+.portfolio-back-circle {
+  position: absolute;
+  width: 100%;
+
+  bottom: 0;
+  left: 0;
+  transform: translate(-50%, 60%);
+  transform-origin: bottom;
+  transition: transform 0.3s ease;
+}
+
+.portfolio-back-circle--to-right {
+  transform: translate(50%, 60%);
+}
+
+.portfolio-back-circle::after {
+  content: "";
+  padding-top: 100%;
+  height: 0px;
+  display: block;
+  overflow: hidden;
+  background: #eeebea;
+  border-radius: 50%;
+}
+
+.portfolio-projects {
+  margin-top: 80px;
+  flex: 1;
+  margin-bottom: 40px;
+  max-width: 900px;
+  min-height: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.portfolio-projects__container {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform 0.3s ease;
+}
+
+.portfolio-projects__commercial-container {
+  transform: translateX(-100%);
+}
+
+.portfolio-projects__residential-container {
+  transform: translateX(100%);
+}
+
+.portfolio-projects__container--active {
+  transform: translateX(0%);
+}
+
+.portfolio-projects .projects-list__title,
+.portfolio-projects .project-cover,
+.portfolio-projects .project-dummy {
+  width: 400px;
+  height: 550px;
+}

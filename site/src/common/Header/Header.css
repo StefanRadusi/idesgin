@@ -10,14 +10,14 @@
 }
 
 .header__logo {
-  height: 60px;
+  height: 45px;
   margin-left: 40px;
 }
 
 .header__facebook-link,
 .header__instagram-link {
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
 }
 
 .header__facebook-link {

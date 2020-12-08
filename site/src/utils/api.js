@@ -104,6 +104,11 @@ export const requestApi = async (
     body: data ? JSON.stringify(data) : null,
   });
 
+  if (response.status == 401) {
+    localStorage.removeItem("token");
+    window.location = "/admin";
+  }
+
   if (response.status < 200 || response.status >= 300) {
     const error = await response.json();
     throw new Error(error.error);
