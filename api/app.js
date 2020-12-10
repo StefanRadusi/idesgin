@@ -81,6 +81,12 @@ app.post(
   asyncHandler(projects.updateProject)
 );
 
+app.post(
+  "/project/add-img",
+  passport.authenticate("jwt", { session: false }),
+  asyncHandler(projects.addImgToProject)
+);
+
 app.delete(
   "/project/:id",
   passport.authenticate("jwt", { session: false }),

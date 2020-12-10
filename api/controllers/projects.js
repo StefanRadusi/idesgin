@@ -1,6 +1,7 @@
 const projectDB = require("../models/project");
 const images = require("../models/images");
 const { v4: uId } = require("uuid");
+const { getImgKey } = require("../utils");
 
 const updateProject = async (req, res) => {
   const { id, title, type, description, tags, imgData, imgType } =
@@ -49,8 +50,6 @@ const updateProject = async (req, res) => {
 };
 
 const getByType = async (req, res) => {
-  console.log(req.params);
-
   const { type } = req.params || {};
 
   if (type) {
@@ -73,14 +72,24 @@ const getByType = async (req, res) => {
 };
 
 const deleteProject = async (req, res) => {
-  console.log(req.params);
-
   const { id } = req.params || {};
-
-  console.log(id);
 
   if (id) {
     try {
+      const project = await projectDB.getProjectById(id);
+
+      if (project && (project.coverImageUrl || project.imgs.length)) {
+        let imgsList = [];
+        if (project.coverImageUrl)
+          imgsList.push(getImgKey(project.coverImageUrl));
+        if (project.imgs.length) {
+          for (const url of project.imgs) {
+            imgsList.push(getImgKey(url));
+          }
+        }
+
+        await images.deleteImgs(imgsList);
+      }
       await projectDB.deleteById(id);
       return res.json({
         msg: "Project deleted successfully",
@@ -97,8 +106,31 @@ const deleteProject = async (req, res) => {
   });
 };
 
+const addImgToProject = async (req, res) => {
+  const { projectId, imgData, imgType } = req.body || {};
+
+  if (projectId && imgData && imgType) {
+    const project = await projectDB.getProjectById(projectId);
+    if (project) {
+      const imgId = uId();
+
+      const imgUrl = await images.updateCoverImg(imgId, imgData, imgType);
+      const imgs = await projectDB.addImgToProject(project, imgUrl);
+
+      return res.json({
+        imgs,
+      });
+    }
+  }
+
+  return res.json({
+    imgs: [],
+  });
+};
+
 module.exports = {
   updateProject,
   getByType,
   deleteProject,
+  addImgToProject,
 };

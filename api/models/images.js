@@ -24,6 +24,20 @@ const updateCoverImg = async (id, imgData, imgType) => {
   return null;
 };
 
+const deleteImgs = async (imgList) => {
+  if (imgList && imgList.length) {
+    const params = {
+      Bucket: "idesign-imgs",
+      Delete: {
+        Objects: imgList.map((Key) => ({ Key })),
+      },
+    };
+
+    await s3.deleteObjects(params).promise();
+  }
+};
+
 module.exports = {
   updateCoverImg,
+  deleteImgs,
 };

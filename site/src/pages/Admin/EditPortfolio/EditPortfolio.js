@@ -80,10 +80,18 @@ export const EditPortfolio = withRouter(({ location: { pathname } }) => {
 
         <div className="edit-portfolio__projects-container">
           {projects.map((project) => {
-            const { id, title, coverImageUrl, description, tags } = project;
+            const {
+              id,
+              title,
+              coverImageUrl,
+              description,
+              tags,
+              imgs,
+            } = project;
             return (
               <ProjectBox
                 key={id}
+                id={id}
                 title={title}
                 coverUrl={coverImageUrl}
                 description={description}
@@ -96,6 +104,10 @@ export const EditPortfolio = withRouter(({ location: { pathname } }) => {
                   setCurrentProject(project);
                   setShowDeleteProjectModal(true);
                 }}
+                imgs={imgs}
+                refetchProjects={() =>
+                  getProject(projectType, setProjects, setLoadingProjects)
+                }
               />
             );
           })}

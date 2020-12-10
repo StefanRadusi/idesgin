@@ -31,6 +31,7 @@ const addProject = async (
       type,
       description,
       tags,
+      imgs: [],
       createdAt: Date.now(),
       updatedAt: Date.now(),
     },
@@ -139,10 +140,34 @@ const deleteById = async (id) => {
   return await dynamodb.delete(params).promise();
 };
 
+const addImgToProject = async (project, imgUrl) => {
+  const imgList = [...project.imgs, imgUrl];
+
+  const UpdateExpression = "set imgs = :imgs, updatedAt = :updatedAt";
+  const ExpressionAttributeValues = {
+    ":imgs": imgList,
+    ":updatedAt": Date.now(),
+  };
+
+  const params = {
+    TableName: process.env.projects_db,
+    Key: {
+      pk: project.pk,
+    },
+    UpdateExpression,
+    ExpressionAttributeValues,
+  };
+
+  await dynamodb.update(params).promise();
+
+  return imgList;
+};
+
 module.exports = {
   getProjectById,
   addProject,
   updateProject,
   getByType,
   deleteById,
+  addImgToProject,
 };

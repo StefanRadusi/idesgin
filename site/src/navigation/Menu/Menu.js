@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { withRouter } from "react-router-dom";
 import { mergeCssClass } from "../../utils/helpers";
 
 import "./Menu.css";
@@ -59,19 +60,23 @@ const getCssClassTextColor = (textColor) => {
   return "menu--black";
 };
 
-export const Menu = () => {
+export const Menu = withRouter(({ location: { pathname } }) => {
   const [textColor, onFooter] = useOnScroll();
 
+  const isAdmin = pathname.includes("admin");
+
   return (
-    <div
-      className={mergeCssClass("menu", getCssClassTextColor(textColor))}
-      style={{ transform: `translateY(-${onFooter}px)` }}
-    >
-      {pages.map(({ path, label }) => (
-        <MenuItem key={path} path={path} label={label} />
-      ))}
-    </div>
+    !isAdmin && (
+      <div
+        className={mergeCssClass("menu", getCssClassTextColor(textColor))}
+        style={{ transform: `translateY(-${onFooter}px)` }}
+      >
+        {pages.map(({ path, label }) => (
+          <MenuItem key={path} path={path} label={label} />
+        ))}
+      </div>
+    )
   );
-};
+});
 
 export default Menu;

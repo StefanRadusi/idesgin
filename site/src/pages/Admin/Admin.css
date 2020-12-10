@@ -1,5 +1,7 @@
-.admin {
+.page.admin {
   background: black;
   display: flex;
   font-size: 12px;
+  padding-top: 80px;
+  height: calc(100% - 80px);
 }

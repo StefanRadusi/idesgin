@@ -1,14 +1,18 @@
 import React from "react";
 
 import "./ProjectBox.css";
+import { ProjectImgs } from "./ProjectImgs/ProjectImgs";
 
 export const ProjectBox = ({
+  id,
   title,
   coverUrl,
   description,
   tags,
   openEditModal,
   showDeleteProjectModal,
+  imgs,
+  refetchProjects,
 }) => {
   return (
     <div className="edit-portfolio__project__container">
@@ -38,6 +42,11 @@ export const ProjectBox = ({
             onClick={showDeleteProjectModal}
           />
         </div>
+        <ProjectImgs
+          projectId={id}
+          imgs={imgs}
+          refetchProjects={refetchProjects}
+        />
       </div>
     </div>
   );
