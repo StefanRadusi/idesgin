@@ -37,12 +37,9 @@ const useGetAllProjects = () => {
   return projects;
 };
 
-export const PortfolioProjects = () => {
+export const PortfolioProjects = ({ setProject }) => {
   const [type, setType] = useState("commercial");
   const { residential, commercial } = useGetAllProjects();
-
-  console.log(residential);
-  console.log(commercial);
 
   return (
     <div className="portfolio-projects-container">
@@ -65,6 +62,7 @@ export const PortfolioProjects = () => {
             <ProjectList
               projects={commercial}
               description="scroll to see more"
+              setProject={setProject}
             />
           )}
         </div>

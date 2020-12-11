@@ -1,0 +1,46 @@
+.project-page__project-imgs-container {
+  padding: 40px 0px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+}
+
+.project-page__project-imgs {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 1000px;
+}
+
+.project-page__project-imgs__item {
+  width: 450px;
+  height: 450px;
+  overflow: hidden;
+  margin: 20px;
+}
+
+.project-page__project-imgs__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-page__project-imgs-container__circle {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: -50%;
+  z-index: -1;
+}
+
+.project-page__project-imgs-container__circle::after {
+  content: "";
+  padding-top: 100%;
+  height: 0px;
+  display: block;
+  overflow: hidden;
+  background: #eeebea;
+  border-radius: 50%;
+}

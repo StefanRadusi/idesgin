@@ -10,8 +10,11 @@ import Menu from "./navigation/Menu/Menu";
 import { Transition } from "./navigation/Transition";
 import { Header } from "./common/Header";
 import { Portfolio } from "./pages/Portfolio/Portfolio";
+import { Project } from "./pages/Project";
 
 export const App = () => {
+  const [project, setProject] = useState(null);
+
   return (
     <React.Fragment>
       <div className="router-container">
@@ -40,10 +43,20 @@ export const App = () => {
             path="/portfolio"
             children={(props) => (
               <Transition {...props}>
-                <Portfolio />
+                <Portfolio setProject={setProject} />
               </Transition>
             )}
           />
+
+          <Route
+            path="/project/:title"
+            children={(props) => (
+              <Transition {...props}>
+                <Project project={project} />
+              </Transition>
+            )}
+          />
+
           <Route
             path="/admin"
             children={(props) => (

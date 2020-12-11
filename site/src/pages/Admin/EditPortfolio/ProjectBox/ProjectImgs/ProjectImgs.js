@@ -51,7 +51,7 @@ export const ProjectImgs = ({ projectId, imgs, refetchProjects }) => {
       >
         <img
           src="/svg/picture.svg"
-          alt="picture"
+          alt="project img"
           className="project-imgs__show-button__img"
         />
 

@@ -5,11 +5,11 @@ import "./Portfolio.css";
 import { PortfolioCover } from "./PortfolioCover";
 import { PortfolioProjects } from "./PortfolioProjects";
 
-export const Portfolio = () => {
+export const Portfolio = ({ setProject }) => {
   return (
     <div className="page portfolio">
       <PortfolioCover />
-      <PortfolioProjects />
+      <PortfolioProjects setProject={setProject} />
       <Footer />
     </div>
   );
