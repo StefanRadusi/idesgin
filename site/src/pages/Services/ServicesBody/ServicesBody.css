@@ -1,0 +1,42 @@
+.services-body-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.services-body {
+  flex: 1;
+  max-width: 1000px;
+  padding: 80px;
+}
+
+.services-body__title {
+  font-size: 36px;
+  margin-bottom: 22px;
+}
+
+.services-body__sub-title {
+  font-size: 16px;
+  max-width: 700px;
+  color: grey;
+}
+
+.steps__circle {
+  width: 150%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  transform: translate(50%, 50%);
+}
+
+.steps__circle::after {
+  content: "";
+  padding-top: 100%;
+  height: 0px;
+  display: block;
+  overflow: hidden;
+  background: #eeebea;
+  border-radius: 50%;
+}

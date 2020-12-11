@@ -1,0 +1,41 @@
+.proposals {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 100px;
+}
+
+.proposals__proposal {
+  width: 270px;
+  height: 560px;
+  background: #eeebea;
+}
+
+.proposals__proposal__cover {
+  width: 270px;
+  height: 270px;
+}
+
+.proposals__proposal__title {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.proposals__proposal__text {
+  width: 100%;
+  padding: 20px;
+  padding-top: 40px;
+  box-sizing: border-box;
+}
+
+.proposals__proposal__description,
+.proposals__proposal__sub-title {
+  font-size: 16px;
+  width: 100%;
+}
+
+.proposals__proposal__description {
+  color: grey;
+  margin-top: 10px;
+}
