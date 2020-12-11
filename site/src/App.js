@@ -12,6 +12,7 @@ import { Header } from "./common/Header";
 import { Portfolio } from "./pages/Portfolio/Portfolio";
 import { Project } from "./pages/Project";
 import { Services } from "./pages/Services";
+import { Contact } from "./pages/Contact";
 
 export const App = () => {
   const [project, setProject] = useState(null);
@@ -63,6 +64,15 @@ export const App = () => {
             children={(props) => (
               <Transition {...props}>
                 <Services />
+              </Transition>
+            )}
+          />
+
+          <Route
+            path="/contact"
+            children={(props) => (
+              <Transition {...props}>
+                <Contact />
               </Transition>
             )}
           />
