@@ -58,6 +58,7 @@ export const StepsWork = () => {
             <FindMore
               text="CHECK OUT OUR WORKING PROCES"
               className="steps-work-home__find-more"
+              path="/services"
             />
           </div>
         </div>

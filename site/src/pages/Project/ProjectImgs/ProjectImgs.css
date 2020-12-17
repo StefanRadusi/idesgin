@@ -19,6 +19,13 @@
   height: 450px;
   overflow: hidden;
   margin: 20px;
+  cursor: pointer;
+  box-shadow: 4px 4px 20px rgba(0, 0, 0, 0);
+  transition: box-shadow 0.3s ease;
+}
+
+.project-page__project-imgs__item:hover {
+  box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .project-page__project-imgs__item img {

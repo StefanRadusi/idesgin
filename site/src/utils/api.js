@@ -45,12 +45,22 @@ export const updateStaff = (payload) => {
   });
 };
 
+export const getProjectsById = (id) => {
+  return requestApi(`/project/${id}`);
+};
+
 export const getProjectsByType = (type) => {
   return requestApi(`/projects/${type}`);
 };
 
 export const addImageToProject = (payload) => {
   return requestApi(`/project/add-img`, "POST", payload, {
+    Authorization: `Bearer ${localStorage.getItem("token")}`,
+  });
+};
+
+export const removeImageFromProject = (payload) => {
+  return requestApi(`/project/remove-img`, "POST", payload, {
     Authorization: `Bearer ${localStorage.getItem("token")}`,
   });
 };

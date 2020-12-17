@@ -20,7 +20,7 @@ const useGetLatestProject = () => {
   return projects;
 };
 
-export const LatestProjects = () => {
+export const LatestProjects = ({ setProject }) => {
   const latestProjects = useGetLatestProject();
 
   return (
@@ -33,9 +33,14 @@ export const LatestProjects = () => {
           description="iDesign Studio's mission is to design and implement
                   functionally-aesthetically balanced spaces tailored to the
                   client's personality traits."
+          setProject={setProject}
         />
 
-        <FindMore text="FIND OUT MORE" className="latest-projects__find-more" />
+        <FindMore
+          text="FIND OUT MORE"
+          className="latest-projects__find-more"
+          path="/portfolio"
+        />
       </div>
     )
   );

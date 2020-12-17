@@ -55,6 +55,8 @@ app.get(`/test/`, (req, res) => {
   res.status(200).send("Request received");
 });
 
+app.get("/project/:id", asyncHandler(projects.getById));
+
 app.get("/projects/:type", asyncHandler(projects.getByType));
 
 app.get("/staff", asyncHandler(staff.getAll));
@@ -85,6 +87,12 @@ app.post(
   "/project/add-img",
   passport.authenticate("jwt", { session: false }),
   asyncHandler(projects.addImgToProject)
+);
+
+app.post(
+  "/project/remove-img",
+  passport.authenticate("jwt", { session: false }),
+  asyncHandler(projects.removeImgFromProject)
 );
 
 app.delete(

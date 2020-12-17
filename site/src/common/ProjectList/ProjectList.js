@@ -36,7 +36,7 @@ export const ProjectList = withRouter(
               )}
               onClick={() => {
                 setProject(project);
-                history.push(`/project/${project.title}`);
+                history.push(`/project/${project.id}`);
               }}
             >
               <ProjectCover key={project.id} project={project} />

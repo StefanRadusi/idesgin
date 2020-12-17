@@ -77,6 +77,7 @@ export const PortfolioProjects = ({ setProject }) => {
             <ProjectList
               projects={residential}
               description="scroll to see more"
+              setProject={setProject}
             />
           )}
         </div>

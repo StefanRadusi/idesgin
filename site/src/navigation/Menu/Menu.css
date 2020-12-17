@@ -3,9 +3,15 @@
   right: 40px;
   bottom: 40px;
   z-index: 1;
+  padding: 15px 15px 15px 30px;
 }
 
 .menu.menu--white .menu-item span,
 .menu.menu--white .menu-item p {
   color: white;
+}
+
+.menu.menu--black {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 4px;
 }

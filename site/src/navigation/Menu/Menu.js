@@ -36,7 +36,7 @@ const useOnScroll = () => {
     const scrollPosition = window.scrollY + window.innerHeight;
     const finalPosition = document.documentElement.scrollHeight;
 
-    if (scrollPosition > window.innerHeight + 30 * pages.length) {
+    if (scrollPosition > window.innerHeight + 43 * pages.length) {
       setTextColor("black");
     } else {
       setTextColor("white");

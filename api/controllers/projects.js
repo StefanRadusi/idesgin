@@ -49,6 +49,21 @@ const updateProject = async (req, res) => {
   });
 };
 
+const getById = async (req, res) => {
+  const { id } = req.params || {};
+
+  if (id) {
+    const project = await projectDB.getProjectById(id);
+    return res.json({
+      project,
+    });
+  }
+
+  return res.json({
+    project: {},
+  });
+};
+
 const getByType = async (req, res) => {
   const { type } = req.params || {};
 
@@ -128,9 +143,31 @@ const addImgToProject = async (req, res) => {
   });
 };
 
+const removeImgFromProject = async (req, res) => {
+  const { projectId, imgUrl } = req.body || {};
+
+  if (projectId && imgUrl) {
+    const project = await projectDB.getProjectById(projectId);
+    if (project) {
+      await images.deleteImgs([getImgKey(imgUrl)]);
+      await projectDB.removeImgToProject(project, imgUrl);
+
+      return res.json({
+        msg: "img deleted successfully deleted",
+      });
+    }
+  }
+
+  return res.json({
+    msg: "something went wrong when deleting img",
+  });
+};
+
 module.exports = {
   updateProject,
+  getById,
   getByType,
   deleteProject,
   addImgToProject,
+  removeImgFromProject,
 };

@@ -38,6 +38,7 @@ export const Login = ({ setLoginStatus }) => {
         value={value}
         onChange={handleOnChange}
         onKeyDown={handleEnter}
+        type="password"
       />
     </div>
   );

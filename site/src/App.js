@@ -13,9 +13,12 @@ import { Portfolio } from "./pages/Portfolio/Portfolio";
 import { Project } from "./pages/Project";
 import { Services } from "./pages/Services";
 import { Contact } from "./pages/Contact";
+import { ImgPreviewer } from "./common/ImgPreviewer";
+import { ImgPreviewerContext } from "./common/ImgPreviewer/ImgPreviewerContext";
 
 export const App = () => {
   const [project, setProject] = useState(null);
+  const [currentImgUrlPreview, setCurrentImgUrlPreview] = useState(null);
 
   return (
     <React.Fragment>
@@ -29,7 +32,7 @@ export const App = () => {
             exact
             children={(props) => (
               <Transition {...props}>
-                <Home />
+                <Home setProject={setProject} />
               </Transition>
             )}
           />
@@ -51,10 +54,12 @@ export const App = () => {
           />
 
           <Route
-            path="/project/:title"
+            path="/project/:id"
             children={(props) => (
               <Transition {...props}>
-                <Project project={project} />
+                <ImgPreviewerContext.Provider value={setCurrentImgUrlPreview}>
+                  <Project project={project} setProject={setProject} />
+                </ImgPreviewerContext.Provider>
               </Transition>
             )}
           />
@@ -81,11 +86,17 @@ export const App = () => {
             path="/admin"
             children={(props) => (
               <Transition {...props}>
-                <Admin />
+                <ImgPreviewerContext.Provider value={setCurrentImgUrlPreview}>
+                  <Admin />
+                </ImgPreviewerContext.Provider>
               </Transition>
             )}
           />
         </Router>
+        <ImgPreviewer
+          currentImgUrlPreview={currentImgUrlPreview}
+          onClose={() => setCurrentImgUrlPreview(null)}
+        />
       </div>
     </React.Fragment>
   );

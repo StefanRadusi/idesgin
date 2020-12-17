@@ -33,13 +33,6 @@ export const Tabs = withRouter(({ location: { pathname } }) => {
             selected={isTabSelected(pathname, "edit-staff")}
           />
         </Link>
-
-        <Link to="/admin/edit-contact">
-          <TabsHeaderButton
-            label={"Contact"}
-            selected={isTabSelected(pathname, "edit-contact")}
-          />
-        </Link>
       </div>
       <div className="tabs-body">
         {shouldRedirect(pathname) ? (

@@ -7,7 +7,7 @@ import { Footer } from "../../common/Footer";
 
 import "./Home.css";
 
-export const Home = () => {
+export const Home = ({ setProject }) => {
   const pageRef = useRef();
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export const Home = () => {
   return (
     <div className="page home" ref={pageRef}>
       <HomeCover />
-      <LatestProjects />
+      <LatestProjects setProject={setProject} />
       <StepsWork />
       <Footer />
     </div>

@@ -1,0 +1,1 @@
+export { ImgPreviewer } from "./ImgPreviewer";
