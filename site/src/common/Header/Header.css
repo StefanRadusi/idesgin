@@ -44,3 +44,24 @@
   margin-left: auto;
   cursor: pointer;
 }
+
+@media only screen and (max-width: 414px) {
+  .header {
+    height: 50px;
+  }
+
+  .header__logo {
+    height: 30px;
+    margin-left: 10px;
+  }
+
+  .header__facebook-link,
+  .header__instagram-link {
+    height: 20px;
+    width: 20px;
+  }
+
+  .header__instagram-link {
+    margin-right: 10px;
+  }
+}

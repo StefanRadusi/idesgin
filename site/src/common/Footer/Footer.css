@@ -45,3 +45,40 @@
 .footer__instagram-link {
   outline: none;
 }
+
+.footer .footer__scroll-up {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  transform: rotate(-90deg);
+  margin-right: 15px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 6px;
+  border-radius: 50%;
+}
+
+.footer .footer__scroll-up img {
+  filter: invert(1);
+}
+
+@media only screen and (max-width: 414px) {
+  .footer .footer__contact-container,
+  .footer .footer__keep-up-container,
+  .footer .footer__services-container,
+  .footer .footer__portfolio-container {
+    display: none;
+  }
+
+  .footer {
+    height: 60px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .footer .footer__scroll-up {
+    display: flex;
+  }
+}

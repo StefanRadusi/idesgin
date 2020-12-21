@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react";
-import { Header } from "../../common/Header";
 import { HomeCover } from "./HomeCover";
 import { LatestProjects } from "./LatestProjects";
 import { StepsWork } from "./StepsWork";

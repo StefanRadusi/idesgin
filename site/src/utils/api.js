@@ -120,7 +120,7 @@ export const requestApi = async (
     body: data ? JSON.stringify(data) : null,
   });
 
-  if (response.status == 401) {
+  if (response.status === 401) {
     localStorage.removeItem("token");
     window.location = "/admin";
   }

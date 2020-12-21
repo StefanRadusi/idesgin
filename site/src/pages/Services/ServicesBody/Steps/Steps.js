@@ -80,7 +80,7 @@ export const Steps = () => {
                 </h2>
               )}
             </div>
-            <img src={img} className="steps__step__img" />
+            <img src={img} className="steps__step__img" alt="img steps" />
             <div className="steps__step__text">
               <h3 className="steps__step__text__title">
                 {isFinal ? "FINAL STEP" : `STEP ${`${index + 1}`}`}

@@ -1,9 +1,13 @@
-.projects-list-container {
-  width: 100%;
-  padding: 50px;
-  box-sizing: border-box;
+.latest-projects__find-more .find-more {
+  transform: translate(-57%, -50px);
 }
 
-.latest-projects__find-more .find-more {
-  transform: translate(-50%, -50px);
+@media only screen and (max-width: 414px) {
+  .find-more-container {
+    justify-content: flex-start;
+  }
+
+  .latest-projects__find-more .find-more {
+    transform: none;
+  }
 }

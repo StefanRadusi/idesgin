@@ -1,6 +1,6 @@
 .portfolio-projects-container {
   width: 100%;
-  height: 100%;
+  height: calc(100% - 121px);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -35,7 +35,7 @@
 .portfolio-projects {
   margin-top: 80px;
   flex: 1;
-  margin-bottom: 40px;
+  /* margin-bottom: -40px; */
   max-width: 900px;
   min-height: 0;
   width: 100%;

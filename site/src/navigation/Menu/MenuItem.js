@@ -5,7 +5,7 @@ import { mergeCssClass } from "../../utils/helpers";
 import "./MenuItem.css";
 
 export const MenuItem = withRouter(
-  ({ path, label, location: { pathname } }) => {
+  ({ path, label, location: { pathname }, hideMenu }) => {
     const [firstLetter, rest] = label.split("").reduce((acc, letter, index) => {
       if (index === 0) {
         acc.push(letter);
@@ -22,6 +22,7 @@ export const MenuItem = withRouter(
           "menu-item",
           pathname === path && "menu-item--selected"
         )}
+        onClick={hideMenu}
       >
         <img src="/svg/arrows-orange.svg" alt="arrows" />
         <Link to={path}>

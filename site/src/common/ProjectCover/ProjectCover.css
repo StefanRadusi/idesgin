@@ -59,3 +59,19 @@
 .project-cover:hover .project-cover__overlay {
   transform: translateX(0px);
 }
+
+@media only screen and (max-width: 414px) {
+  .project-cover {
+    height: 400px;
+  }
+}
+
+@media (hover: none) {
+  .project-cover:hover .project-cover__description {
+    transform: translateX(100%);
+  }
+
+  .project-cover:hover .project-cover__overlay {
+    transform: translateX(calc(100% - 80px));
+  }
+}

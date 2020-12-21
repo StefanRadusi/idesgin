@@ -31,7 +31,7 @@ export const Transition = ({ match, children }) => {
       }, 800);
     }
     // eslint-disable-next-line
-  }, [match]);
+  }, [match && match.url]);
 
   return (
     <div

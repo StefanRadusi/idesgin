@@ -1,3 +1,9 @@
+.projects-list-container {
+  width: 100%;
+  padding: 50px;
+  box-sizing: border-box;
+}
+
 .projects-list {
   width: 100%;
   display: flex;
@@ -56,4 +62,27 @@
   justify-content: flex-end;
   margin-right: 10px;
   transform: translateY(-30%);
+}
+
+@media only screen and (max-width: 414px) {
+  .projects-list-container {
+    padding: 15px;
+  }
+
+  .projects-list__title-container,
+  .projects-list__project-cover-container {
+    min-width: 100%;
+  }
+
+  .projects-list__title {
+    height: 250px;
+  }
+
+  .projects-list__project-cover--right {
+    margin: 0;
+  }
+
+  .projects-list__project-cover--left {
+    transform: translateY(0);
+  }
 }

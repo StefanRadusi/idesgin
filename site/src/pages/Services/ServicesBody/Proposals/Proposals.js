@@ -31,7 +31,11 @@ export const Proposals = () => {
     <div className="proposals">
       {proposals.map(({ src, title, subTitle, description }, index) => (
         <div key={index} className="proposals__proposal">
-          <img className="proposals__proposal__cover" src={src}></img>
+          <img
+            className="proposals__proposal__cover"
+            src={src}
+            alt="proposal cover"
+          />
           <h3 className="proposals__proposal__title">{title}</h3>
           <div className="proposals__proposal__text">
             <p className="proposals__proposal__sub-title">{subTitle}</p>

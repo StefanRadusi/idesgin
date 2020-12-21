@@ -5,7 +5,6 @@ import "./Header.css";
 
 export const Header = withRouter(({ location: { pathname } }) => {
   const isAdminPage = pathname.includes("admin");
-  console.log(isAdminPage);
 
   return (
     <div className="header">
@@ -41,6 +40,7 @@ export const Header = withRouter(({ location: { pathname } }) => {
             localStorage.removeItem("token");
             window.location = "/admin";
           }}
+          alt="log out"
         />
       )}
     </div>

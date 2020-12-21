@@ -46,6 +46,13 @@ export const Footer = () => {
           </a>
         </div>
       </div>
+
+      <div
+        className="footer__scroll-up"
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      >
+        <img src="/svg/arrows.svg" alt="arrows" />
+      </div>
     </div>
   );
 };

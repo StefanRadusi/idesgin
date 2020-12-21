@@ -118,7 +118,7 @@ export const ProjectImgs = withImgPreviewer(
                         refetchProjects
                       )}
                     >
-                      <img src="/svg/trash.svg" />
+                      <img src="/svg/trash.svg" alt="trash" />
                     </div>
                   </div>
                 ))}

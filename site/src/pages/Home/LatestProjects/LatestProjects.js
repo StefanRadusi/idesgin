@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { getLatestProjects } from "../../../utils/api";
-import { ProjectCover } from "../../../common/ProjectCover/ProjectCover";
 
-import "./LatestProjects.css";
-import { mergeCssClass } from "../../../utils/helpers";
 import { CircleEffect } from "../../../common/CircleEffect";
 import { FindMore } from "../../../common/FindMore";
 import { ProjectList } from "../../../common/ProjectList";
+
+import "./LatestProjects.css";
 
 const useGetLatestProject = () => {
   const [projects, setProjects] = useState([]);

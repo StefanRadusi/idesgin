@@ -29,7 +29,7 @@
   align-items: flex-end;
   border-right: 4px solid black;
   padding-right: 10px;
-  width: 400px;
+  width: 418px;
   margin-top: 80px;
   margin-left: 80px;
 }
@@ -55,4 +55,38 @@
 
 .steps-work-home__find-more .find-more {
   margin-top: 100px;
+}
+
+.steps-work-home__thumbs .find-more {
+  display: none;
+}
+
+@media only screen and (max-width: 414px) {
+  .steps-work-home {
+    flex-direction: column-reverse;
+    /* margin: 10px; */
+    margin-top: 20px;
+    padding: 15px;
+    box-sizing: border-box;
+  }
+
+  .steps-work-home__title__text-container {
+    width: unset;
+    margin: 0px;
+  }
+
+  .steps-work-home__title .find-more {
+    display: none;
+  }
+
+  .steps-work-home__thumbs .find-more {
+    display: flex;
+    margin-top: 20px;
+    width: 80%;
+  }
+
+  .find-more-container.steps-work-home__find-more {
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
 }

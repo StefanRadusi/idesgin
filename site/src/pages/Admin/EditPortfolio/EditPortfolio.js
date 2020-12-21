@@ -32,7 +32,6 @@ const useGetProjects = (setLoadingProjects, projectType) => {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    console.log("get projects", projectType);
     getProject(projectType, setProjects, setLoadingProjects);
   }, [projectType, setLoadingProjects]);
 

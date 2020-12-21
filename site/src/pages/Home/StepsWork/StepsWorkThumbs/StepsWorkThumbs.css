@@ -13,7 +13,7 @@
 .steps-work-thumbs__text-container {
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: 274px;
   padding-top: 20px;
 }
 
@@ -21,4 +21,19 @@
   font-size: 18px;
   margin-top: 10px;
   color: grey;
+}
+
+@media only screen and (max-width: 414px) {
+  .steps-work-thumbs {
+    flex-direction: column-reverse;
+  }
+
+  .steps-work-thumbs__img {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .steps-work-thumbs__description {
+    margin-bottom: 10px;
+  }
 }

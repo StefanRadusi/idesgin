@@ -10,11 +10,10 @@ export const Project = withRouter(({ project, setProject }) => {
   let { id } = useParams();
   const { coverImageUrl, title: projectTitle, description, imgs } =
     project || {};
-  console.log(id, project);
 
   useEffect(() => {
     if (id) getProjectsById(id).then(({ project }) => setProject(project));
-  }, []);
+  }, [id, setProject]);
 
   return (
     <div className="project-page page">

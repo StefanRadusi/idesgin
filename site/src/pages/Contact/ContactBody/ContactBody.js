@@ -167,6 +167,7 @@ export const ContactBody = () => {
           <img
             src="/svg/paper-plane.svg"
             className="contact-mail__email-sent__icon"
+            alt="paper plane"
           />
           <p>Mail sent, check your mail for a automatic reply.</p>
         </div>

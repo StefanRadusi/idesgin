@@ -120,15 +120,15 @@
 
 @keyframes frontAnimation {
   0% {
-    transform: translateY(-110px);
+    transform: translateY(-100%);
   }
 
   50% {
-    transform: translateY(0px);
+    transform: translateY(0%);
   }
 
   100% {
-    transform: translateY(-40px);
+    transform: translateY(-30%);
   }
 }
 
@@ -144,17 +144,17 @@
 
 @keyframes backAnimation {
   0% {
-    transform: translateY(110px);
+    transform: translateY(100%);
     color: white;
   }
 
   50% {
-    transform: translateY(0px);
+    transform: translateY(0%);
     color: white;
   }
 
   100% {
-    transform: translateY(40px);
+    transform: translateY(30%);
     color: #f1b434;
   }
 }
@@ -176,5 +176,17 @@
 
   100% {
     opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .page-cover__front-text,
+  .page-cover__back-text {
+    font-size: 45px;
+  }
+
+  .page-cover__description {
+    font-size: 13px;
+    width: 130%;
   }
 }

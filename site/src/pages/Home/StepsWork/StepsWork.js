@@ -45,6 +45,11 @@ export const StepsWork = () => {
           {steps.map((step) => (
             <StepsWorkThumbs key={step.title} {...step} />
           ))}
+          <FindMore
+            text="CHECK OUT OUR WORKING PROCES"
+            className="steps-work-home__find-more"
+            path="/services"
+          />
         </div>
         <div className="steps-work-home__title">
           <div className="steps-work-home__title__text-container">
