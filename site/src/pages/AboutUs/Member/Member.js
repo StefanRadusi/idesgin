@@ -17,6 +17,7 @@ export const Member = ({
         orientation === "right" && "staff-member--ort-right"
       )}
     >
+      <h3 className="staff-member__text__name--mobile">{name}</h3>
       <div className="staff-member__cover-container">
         <div className="staff-member__cover">
           <img src={coverImageUrl} alt="staff cover" />

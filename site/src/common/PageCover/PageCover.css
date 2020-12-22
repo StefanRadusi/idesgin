@@ -188,5 +188,6 @@
   .page-cover__description {
     font-size: 13px;
     width: 130%;
+    max-width: 315px;
   }
 }

@@ -46,3 +46,19 @@
   background: #eeebea;
   border-radius: 50%;
 }
+
+@media only screen and (max-width: 414px) {
+  .portfolio-projects-header {
+    overflow: hidden;
+    margin-top: 10px;
+  }
+
+  .portfolio-projects-header__buttons {
+    margin-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .portfolio-projects-header__button {
+    font-size: 15px;
+  }
+}

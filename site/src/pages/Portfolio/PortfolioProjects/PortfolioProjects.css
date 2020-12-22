@@ -1,6 +1,6 @@
 .portfolio-projects-container {
   width: 100%;
-  height: calc(100% - 121px);
+  height: calc(100% - 81px);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -35,7 +35,6 @@
 .portfolio-projects {
   margin-top: 80px;
   flex: 1;
-  /* margin-bottom: -40px; */
   max-width: 900px;
   min-height: 0;
   width: 100%;
@@ -69,4 +68,40 @@
 .portfolio-projects .project-dummy {
   width: 400px;
   height: 550px;
+}
+
+@media only screen and (max-width: 414px) {
+  .portfolio-projects {
+    margin-top: 10px;
+    padding: 0px 10px;
+    width: calc(100% - 20px);
+  }
+
+  .portfolio-projects__container {
+    width: calc(100% - 20px);
+    left: 10px;
+  }
+
+  .portfolio-projects__residential-container {
+    transform: translateX(calc(100% + 10px));
+  }
+
+  .portfolio-projects__commercial-container {
+    transform: translateX(calc(-100% - 10px));
+  }
+
+  .portfolio-projects__container--active {
+    transform: translateX(0);
+  }
+
+  .portfolio-projects .projects-list__title,
+  .portfolio-projects .project-cover {
+    width: 100%;
+    height: 400px;
+  }
+
+  .portfolio-projects .projects-list__title,
+  .portfolio-projects .project-dummy {
+    display: none;
+  }
 }
