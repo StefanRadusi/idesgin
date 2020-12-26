@@ -39,3 +39,20 @@
   color: grey;
   margin-top: 10px;
 }
+
+@media only screen and (max-width: 414px) {
+  .proposals {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 60px;
+  }
+
+  .proposals__proposal {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .proposals__proposal__cover {
+    width: 100%;
+  }
+}

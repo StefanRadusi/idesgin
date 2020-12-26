@@ -40,3 +40,20 @@
   background: #eeebea;
   border-radius: 50%;
 }
+
+@media only screen and (max-width: 414px) {
+  .services-body {
+    padding: 10px;
+    overflow: hidden;
+    margin-top: 20px;
+  }
+
+  .services-body__title {
+    font-size: 30px;
+  }
+
+  .services-body__title-container {
+    border-left: 4px solid black;
+    padding-left: 10px;
+  }
+}

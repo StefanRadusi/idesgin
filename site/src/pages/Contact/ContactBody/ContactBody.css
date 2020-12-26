@@ -220,3 +220,48 @@
     transform: translateX(0px);
   }
 }
+
+@media only screen and (max-width: 414px) {
+  .contact-body {
+    flex-direction: column;
+    margin-top: 10px;
+    overflow: hidden;
+    padding: 20px;
+  }
+
+  .contact-info h3 {
+    font-size: 30px;
+  }
+
+  .contact-info h3 span,
+  .contact-info h3 {
+    text-align: left;
+  }
+
+  .contact-info p span,
+  .contact-info p {
+    text-align: left;
+    font-size: 14px;
+  }
+
+  .contact-mail__description {
+    transform: none;
+    position: unset;
+    font-size: 20px;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .contact-mail__description span {
+    font-size: 18px;
+  }
+
+  .contact-mail {
+    margin-top: 30px;
+    padding-left: 0;
+  }
+
+  .contact-mail__message textarea {
+    height: 150px;
+  }
+}
