@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Loading } from "../../../../common/Loading";
 import { updateProject } from "../../../../utils/api";
 import { mergeCssClass, resizeImg } from "../../../../utils/helpers";
+import { tagsList } from "./Tags";
 
 import "./UpdateProjectModal.css";
 
@@ -167,13 +168,7 @@ export const UpdateProjectModal = ({
               <div className="add-project-modal__project-tags">
                 <p>Tags</p>
                 <div className="add-project-modal__project-tags-container">
-                  {[
-                    "minimalist",
-                    "classic",
-                    "retro",
-                    "industrial",
-                    "urban garden",
-                  ].map((tag) => (
+                  {tagsList.map((tag) => (
                     <p
                       key={tag}
                       className={mergeCssClass(

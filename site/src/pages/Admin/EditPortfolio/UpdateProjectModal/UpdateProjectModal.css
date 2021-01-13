@@ -143,6 +143,8 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  max-height: 200px;
+  overflow: auto;
 }
 
 .add-project-modal__project-tags__tag {

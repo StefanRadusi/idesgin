@@ -31,7 +31,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Enable JSON use
-app.use(express.json({ limit: "1mb" }));
+app.use(express.json({ limit: "1.5mb" }));
 
 // Since Express doesn't support error handling of promises out of the box,
 // this handler enables that
