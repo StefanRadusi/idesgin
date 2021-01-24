@@ -21,8 +21,8 @@ export const Footer = () => {
       </div>
       <div className="footer__contact-container">
         <h3> CONTACT US</h3>
-        <p>Tel: +40740488935</p>
-        <p>Adress: Str. Nr. Other Details</p>
+        <p>Tel: +40740488935 / +40751195354</p>
+        <p>Adress: str. Eroilor nr 32</p>
         <p>Mail: idizainstudio@gmail.com</p>
       </div>
       <div className="footer__keep-up-container">

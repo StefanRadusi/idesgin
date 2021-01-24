@@ -1,12 +1,14 @@
 const AWS = require("aws-sdk");
 const s3 = new AWS.S3();
+const { v4: uId } = require("uuid");
 
 const updateCoverImg = async (id, imgData, imgType) => {
   if (id && imgData && imgType) {
-    const buffer = Buffer.from(imgData, "base64");
+    await deleteImgs([id]);
 
+    const buffer = Buffer.from(imgData, "base64");
     const [, extension] = imgType.split("/");
-    const Key = `${id}.${extension}`;
+    const Key = `${uId()}.${extension}`;
 
     await s3
       .putObject({

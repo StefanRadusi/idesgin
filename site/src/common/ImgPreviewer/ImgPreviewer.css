@@ -21,7 +21,7 @@
 .img-previewer-container img {
   width: calc(100% - 100px);
   height: calc(100% - 100px);
-  object-fit: cover;
+  object-fit: scale-down;
 }
 
 .img-previewer-container__close {

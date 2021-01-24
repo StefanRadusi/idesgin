@@ -10,21 +10,10 @@ export const PortfolioProjectsHeader = ({ type, onClick }) => {
         <div
           className={mergeCssClass(
             "portfolio-projects-header__buttons__circle",
-            type === "residential" &&
+            type === "commercial" &&
               "portfolio-projects-header__buttons__circle--to-right"
           )}
         />
-        <div
-          className={mergeCssClass(
-            "portfolio-projects-header__button",
-            "portfolio-projects-header__button__commercial",
-            type === "commercial" &&
-              "portfolio-projects-header__button--selected"
-          )}
-          onClick={() => onClick("commercial")}
-        >
-          COMMERCIAL
-        </div>
         <div
           className={mergeCssClass(
             "portfolio-projects-header__button",
@@ -35,6 +24,17 @@ export const PortfolioProjectsHeader = ({ type, onClick }) => {
           onClick={() => onClick("residential")}
         >
           RESIDENTIAL
+        </div>
+        <div
+          className={mergeCssClass(
+            "portfolio-projects-header__button",
+            "portfolio-projects-header__button__commercial",
+            type === "commercial" &&
+              "portfolio-projects-header__button--selected"
+          )}
+          onClick={() => onClick("commercial")}
+        >
+          COMMERCIAL
         </div>
       </div>
     </div>

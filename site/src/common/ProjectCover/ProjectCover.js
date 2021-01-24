@@ -1,4 +1,5 @@
 import React from "react";
+import { addNewLine } from "../../utils/helpers";
 
 import "./ProjectCover.css";
 
@@ -15,9 +16,10 @@ export const ProjectCover = ({ project }) => {
       </div>
 
       <div className="project-cover__description-container">
-        <p className="project-cover__description">
-          {description && description}
-        </p>
+        <p
+          className="project-cover__description"
+          dangerouslySetInnerHTML={{ __html: addNewLine(description) }}
+        />
       </div>
     </div>
   );

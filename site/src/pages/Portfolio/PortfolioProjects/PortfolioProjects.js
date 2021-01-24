@@ -38,7 +38,7 @@ const useGetAllProjects = () => {
 };
 
 export const PortfolioProjects = ({ setProject }) => {
-  const [type, setType] = useState("commercial");
+  const [type, setType] = useState("residential");
   const { residential, commercial } = useGetAllProjects();
 
   return (
@@ -54,13 +54,13 @@ export const PortfolioProjects = ({ setProject }) => {
         <div
           className={mergeCssClass(
             "portfolio-projects__container",
-            "portfolio-projects__commercial-container",
-            type === "commercial" && "portfolio-projects__container--active"
+            "portfolio-projects__residential-container",
+            type === "residential" && "portfolio-projects__container--active"
           )}
         >
-          {commercial && (
+          {residential && (
             <ProjectList
-              projects={commercial}
+              projects={residential}
               description="scroll to see more"
               setProject={setProject}
             />
@@ -69,13 +69,13 @@ export const PortfolioProjects = ({ setProject }) => {
         <div
           className={mergeCssClass(
             "portfolio-projects__container",
-            "portfolio-projects__residential-container",
-            type === "residential" && "portfolio-projects__container--active"
+            "portfolio-projects__commercial-container",
+            type === "commercial" && "portfolio-projects__container--active"
           )}
         >
-          {residential && (
+          {commercial && (
             <ProjectList
-              projects={residential}
+              projects={commercial}
               description="scroll to see more"
               setProject={setProject}
             />

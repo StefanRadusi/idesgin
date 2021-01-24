@@ -26,3 +26,7 @@ export const resizeImg = (file) =>
       "base64"
     );
   });
+
+export const addNewLine = (text) => {
+  return text && text.replace(/\r?\n/g, "<br />").replace("<script>", "");
+};

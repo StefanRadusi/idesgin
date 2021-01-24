@@ -10,7 +10,11 @@ const updateProject = async (req, res) => {
   if (id) {
     const projectInDb = await projectDB.getProjectById(id);
     if (projectInDb) {
-      const coverImageUrl = await images.updateCoverImg(id, imgData, imgType);
+      const coverImageUrl = await images.updateCoverImg(
+        getImgKey(projectInDb.coverImageUrl),
+        imgData,
+        imgType
+      );
 
       await projectDB.updateProject(
         id,
