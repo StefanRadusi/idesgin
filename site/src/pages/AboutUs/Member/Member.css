@@ -113,12 +113,12 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: -100px;
+    top: -130px;
     object-fit: unset;
   }
 
   .staff-member:nth-child(4) .staff-member__cover img {
-    top: -160px;
+    top: -139px;
   }
 
   .staff-member__text__name--mobile {
