@@ -112,7 +112,11 @@ const getByType = async (type) => {
       })
       .promise();
 
-    return result && result.Items;
+    return (
+      result &&
+      result.Items &&
+      result.Items.sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1))
+    );
   }
 
   const params = {
@@ -186,6 +190,25 @@ const removeImgToProject = async (project, imgUrl) => {
   return imgList;
 };
 
+const updateCreatedDate = (id, createdAt) => {
+  let UpdateExpression = "set createdAt = :createdAt";
+
+  const ExpressionAttributeValues = {
+    ":createdAt": createdAt,
+  };
+
+  const params = {
+    TableName: process.env.projects_db,
+    Key: {
+      pk: id,
+    },
+    UpdateExpression,
+    ExpressionAttributeValues,
+  };
+
+  return dynamodb.update(params).promise();
+};
+
 module.exports = {
   getProjectById,
   addProject,
@@ -194,4 +217,5 @@ module.exports = {
   deleteById,
   addImgToProject,
   removeImgToProject,
+  updateCreatedDate,
 };

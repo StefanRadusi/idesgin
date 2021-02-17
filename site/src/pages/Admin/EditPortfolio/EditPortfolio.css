@@ -6,6 +6,11 @@
   overflow: hidden;
 }
 
+.edit-portfolio-tabs-body__actions {
+  display: flex;
+}
+
+.reorder-projects-button,
 .add-project-button {
   background: none;
   outline: none;
@@ -13,8 +18,10 @@
   margin: 5px;
   cursor: pointer;
   color: white;
+  flex: 1;
 }
 
+.reorder-projects-button:hover,
 .add-project-button:hover {
   background: white;
   color: black;
@@ -28,4 +35,22 @@
 .edit-portfolio__projects-container {
   flex: 1;
   overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-portfolio__project {
+  display: flex;
+  flex: 1;
+}
+
+.edit-portfolio__project__reorder-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.edit-portfolio__project__reorder-buttons__button {
+  height: 40px;
+  margin: 5px;
 }

@@ -65,6 +65,12 @@ export const removeImageFromProject = (payload) => {
   });
 };
 
+export const reorderProjects = (payload) => {
+  return requestApi("/projects/reorder", "POST", payload, {
+    Authorization: `Bearer ${localStorage.getItem("token")}`,
+  });
+};
+
 export const getStaffMembers = () => {
   return requestApi(`/staff`);
 };

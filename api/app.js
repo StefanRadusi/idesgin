@@ -95,6 +95,12 @@ app.post(
   asyncHandler(projects.removeImgFromProject)
 );
 
+app.post(
+  "/projects/reorder",
+  passport.authenticate("jwt", { session: false }),
+  asyncHandler(projects.reorder)
+);
+
 app.delete(
   "/project/:id",
   passport.authenticate("jwt", { session: false }),

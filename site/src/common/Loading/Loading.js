@@ -26,11 +26,12 @@ export const Loading = ({ show, white }) => {
   const [cubeFace, setCubeFace] = useState("show-front");
   const [loadingCssState, setLoadingCssState] = useState("");
   const interval = useRef();
+  const hideTimeOut = useRef();
 
   useEffect(() => {
     if (show) {
       setLoadingCssState("render-loading");
-      setTimeout(() => {
+      hideTimeOut.current = setTimeout(() => {
         setLoadingCssState("render-loading show-loading");
         setCubeFace(getRandomCubeFace(cubeFace));
       }, 10);
@@ -41,13 +42,14 @@ export const Loading = ({ show, white }) => {
     } else if (!show && interval.current) {
       clearInterval(interval.current);
       setLoadingCssState("render-loading");
-      setTimeout(() => {
+      hideTimeOut.current = setTimeout(() => {
         setLoadingCssState("");
       }, 350);
     }
 
     return () => {
       clearInterval(interval.current);
+      clearTimeout(hideTimeOut.current);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [show]);

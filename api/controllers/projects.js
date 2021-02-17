@@ -167,6 +167,29 @@ const removeImgFromProject = async (req, res) => {
   });
 };
 
+const reorder = async (req, res) => {
+  const { projects } = req.body || {};
+
+  let updates = [];
+  if (projects && projects.length) {
+    for (const project of projects) {
+      updates.push(projectDB.updateCreatedDate(project.id, project.createdAt));
+    }
+  }
+
+  Promise.all(updates)
+    .then(() => {
+      return res.json({
+        msg: "Projects reorder successfully",
+      });
+    })
+    .catch(() => {
+      return res.json({
+        msg: "Error projects reorder",
+      });
+    });
+};
+
 module.exports = {
   updateProject,
   getById,
@@ -174,4 +197,5 @@ module.exports = {
   deleteProject,
   addImgToProject,
   removeImgFromProject,
+  reorder,
 };
