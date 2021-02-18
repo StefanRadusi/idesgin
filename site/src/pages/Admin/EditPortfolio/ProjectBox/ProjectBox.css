@@ -35,11 +35,13 @@
 .edit-portfolio__project__details__description {
   flex: 1;
   color: white;
+  font-size: 20px;
 }
 
 .edit-portfolio__project__details__tags {
   margin-top: 20px;
   color: white;
+  font-size: 20px;
 }
 
 .edit-portfolio__project__buttons {

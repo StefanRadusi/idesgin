@@ -20,6 +20,7 @@ const addProject = async (
   title,
   type,
   description,
+  latestPosition,
   tags,
   coverImageUrl
 ) => {
@@ -30,6 +31,7 @@ const addProject = async (
       title,
       type,
       description,
+      latestPosition,
       tags,
       imgs: [],
       createdAt: Date.now(),
@@ -51,16 +53,18 @@ const updateProject = async (
   title,
   type,
   description,
+  latestPosition,
   tags,
   coverImageUrl
 ) => {
   let UpdateExpression =
-    "set title = :title, #tp = :type_proj, description = :description, tags = :tags, updatedAt = :updatedAt";
+    "set title = :title, #tp = :type_proj, description = :description, latestPosition = :latestPosition, tags = :tags, updatedAt = :updatedAt";
 
   const ExpressionAttributeValues = {
     ":title": title,
     ":type_proj": type,
     ":description": description,
+    ":latestPosition": latestPosition,
     ":tags": tags,
     ":updatedAt": Date.now(),
   };
@@ -98,10 +102,9 @@ const getByType = async (type) => {
     return (
       result &&
       result.Items &&
-      result.Items.sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1)).slice(
-        0,
-        3
-      )
+      result.Items.filter((item) => item.latestPosition)
+        .sort((a, b) => (a.latestPosition < b.latestPosition ? -1 : 1))
+        .slice(0, 3)
     );
   }
 
@@ -209,6 +212,30 @@ const updateCreatedDate = (id, createdAt) => {
   return dynamodb.update(params).promise();
 };
 
+const clearLatestPosition = async (position) => {
+  const projects = await getByType("all");
+  if (projects && projects.length) {
+    const projectWithPositions = projects.find(
+      (project) => project.latestPosition === position
+    );
+
+    console.log(projectWithPositions);
+    if (projectWithPositions) {
+      let UpdateExpression = "REMOVE latestPosition";
+
+      const params = {
+        TableName: process.env.projects_db,
+        Key: {
+          pk: projectWithPositions.pk,
+        },
+        UpdateExpression,
+      };
+
+      return dynamodb.update(params).promise();
+    }
+  }
+};
+
 module.exports = {
   getProjectById,
   addProject,
@@ -218,4 +245,5 @@ module.exports = {
   addImgToProject,
   removeImgToProject,
   updateCreatedDate,
+  clearLatestPosition,
 };

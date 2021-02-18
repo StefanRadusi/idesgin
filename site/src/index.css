@@ -41,6 +41,10 @@ input {
   padding: 10px;
 }
 
+textarea {
+  font-family: "Futura", "Titillium Web", sans-serif;
+}
+
 a,
 .link {
   font-family: "Futura", "Hind", "Titillium Web", sans-serif;

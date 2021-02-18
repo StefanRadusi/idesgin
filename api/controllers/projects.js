@@ -4,8 +4,20 @@ const { v4: uId } = require("uuid");
 const { getImgKey } = require("../utils");
 
 const updateProject = async (req, res) => {
-  const { id, title, type, description, tags, imgData, imgType } =
-    req.body || {};
+  const {
+    id,
+    title,
+    type,
+    description,
+    latestPosition,
+    tags,
+    imgData,
+    imgType,
+  } = req.body || {};
+
+  if (latestPosition) {
+    await projectDB.clearLatestPosition(latestPosition);
+  }
 
   if (id) {
     const projectInDb = await projectDB.getProjectById(id);
@@ -21,6 +33,7 @@ const updateProject = async (req, res) => {
         title,
         type,
         description,
+        latestPosition,
         tags,
         coverImageUrl
       );
@@ -40,6 +53,7 @@ const updateProject = async (req, res) => {
     title,
     type,
     description,
+    latestPosition,
     tags,
     coverImageUrl
   );

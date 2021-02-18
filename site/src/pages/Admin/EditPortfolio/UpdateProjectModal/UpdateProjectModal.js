@@ -38,6 +38,7 @@ const handleSaveProject = (
   title,
   type,
   description,
+  latestPosition,
   tags,
   imgSrc,
   imgType,
@@ -51,6 +52,7 @@ const handleSaveProject = (
       title,
       type,
       description,
+      latestPosition,
       tags,
     };
 
@@ -60,8 +62,6 @@ const handleSaveProject = (
       payload.imgType = imgType;
       payload.imgData = imgData;
     }
-
-    console.log(payload);
 
     setLoading(true);
     updateProject(payload)
@@ -89,12 +89,14 @@ export const UpdateProjectModal = ({
     id,
     title: currentTitle,
     description: currentDescription,
+    latestPosition: currentLatestPosition,
     tags: currentTags,
     coverImageUrl,
   } = currentProject || {};
 
   const [title, setTitle] = useState(currentTitle || "");
   const [description, setDescription] = useState(currentDescription || "");
+  const [latestPosition, setLatestPosition] = useState(currentLatestPosition);
   const [tags, setTags] = useState(currentTags || []);
   const [imgSrc, setImgSrc] = useState("");
   const [imgType, setImgType] = useState();
@@ -103,6 +105,7 @@ export const UpdateProjectModal = ({
   useEffect(() => {
     setTitle(currentTitle || "");
     setDescription(currentDescription || "");
+    setLatestPosition(currentLatestPosition);
     setTags(currentTags || []);
     if (coverImageUrl) {
       setImgSrc(coverImageUrl);
@@ -111,7 +114,14 @@ export const UpdateProjectModal = ({
       setImgSrc("");
       setImgType("");
     }
-  }, [currentTitle, currentDescription, currentTags, coverImageUrl, show]);
+  }, [
+    currentTitle,
+    currentDescription,
+    currentLatestPosition,
+    currentTags,
+    coverImageUrl,
+    show,
+  ]);
 
   return (
     show && (
@@ -165,6 +175,27 @@ export const UpdateProjectModal = ({
                 />
               </div>
 
+              <div className="add-project-modal__projects-latest">
+                <p className="add-project-modal__projects-latest__title">
+                  Latest Projects Position
+                </p>
+                <div className="add-project-modal__projects-latest__positions">
+                  {[1, 2, 3].map((position) => (
+                    <p
+                      key={position}
+                      className={mergeCssClass(
+                        "add-project-modal__projects-latest__position",
+                        position === latestPosition &&
+                          "add-project-modal__projects-latest__position--selected"
+                      )}
+                      onClick={() => setLatestPosition(position)}
+                    >
+                      {position}
+                    </p>
+                  ))}
+                </div>
+              </div>
+
               <div className="add-project-modal__project-tags">
                 <p>Tags</p>
                 <div className="add-project-modal__project-tags-container">
@@ -203,6 +234,7 @@ export const UpdateProjectModal = ({
                 title,
                 type,
                 description,
+                latestPosition,
                 tags,
                 imgSrc,
                 imgType,

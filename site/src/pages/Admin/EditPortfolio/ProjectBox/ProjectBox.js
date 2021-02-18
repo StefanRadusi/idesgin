@@ -8,6 +8,7 @@ export const ProjectBox = ({
   title,
   coverUrl,
   description,
+  latestPosition,
   tags,
   openEditModal,
   showDeleteProjectModal,
@@ -21,9 +22,23 @@ export const ProjectBox = ({
       </div>
       <div className="edit-portfolio__project__details">
         <h2 className="edit-portfolio__project__details__title">{title}</h2>
+
         <p className="edit-portfolio__project__details__description">
           {description}
         </p>
+        {latestPosition && (
+          <div className="add-project-modal__projects-latest">
+            <p className="add-project-modal__projects-latest__title">
+              Latest Projects Position
+            </p>
+            <div className="add-project-modal__projects-latest__positions">
+              <p className="add-project-modal__projects-latest__position">
+                {latestPosition}
+              </p>
+            </div>
+          </div>
+        )}
+
         <p className="edit-portfolio__project__details__tags">{`tags: ${tags.join(
           ", "
         )}`}</p>

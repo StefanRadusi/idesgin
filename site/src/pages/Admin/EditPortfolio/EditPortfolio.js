@@ -139,6 +139,7 @@ export const EditPortfolio = withRouter(({ location: { pathname } }) => {
               description,
               tags,
               imgs,
+              latestPosition,
             } = project;
             return (
               <div key={id} className="edit-portfolio__project">
@@ -183,6 +184,7 @@ export const EditPortfolio = withRouter(({ location: { pathname } }) => {
                   refetchProjects={() =>
                     getProject(projectType, setProjects, setLoadingProjects)
                   }
+                  latestPosition={latestPosition}
                 />
               </div>
             );
