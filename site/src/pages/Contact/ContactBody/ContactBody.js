@@ -21,14 +21,14 @@ const handleSendMail = (
       setLoading(true);
       emailjs
         .send(
-          "service_7xeiopl",
+          "service_q49d5np",
           "contact_form",
           {
             name,
             mail,
             subject,
             message,
-            to_email: "radusi.stefan@gmail.com",
+            to_email: "idizainstudio@gmail.com",
           },
           "user_xlyLUbENywvyi5Vh77nQj"
         )
