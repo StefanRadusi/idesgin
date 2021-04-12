@@ -17,4 +17,4 @@ inputs:
     # AWS DynamoDB Table Index name. Needed for the code to access it.
     dbIndex1: ${output:database.indexes.gsi1.name}
     # A secret token to sign the JWT tokens with.
-    tokenSecret: ${env:tokenSecret}
+    tokenSecret: ${param:tokenSecret}
